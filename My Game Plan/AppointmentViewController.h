@@ -1,5 +1,5 @@
 //
-//  FirstViewController.h
+//  AppointmentViewController.h
 //  My Game Plan
 //
 //  Created by Damien Leri on 6/29/13.
@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FirstViewController : UIViewController
+@interface AppointmentViewController : UIViewController
+- (IBAction)CancelButton:(id)sender;
 
 @end

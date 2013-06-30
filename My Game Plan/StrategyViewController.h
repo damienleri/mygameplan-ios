@@ -1,5 +1,5 @@
 //
-//  SecondViewController.h
+//  StrategyViewController.h
 //  My Game Plan
 //
 //  Created by Damien Leri on 6/29/13.
@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SecondViewController : UIViewController
+@interface StrategyViewController : UIViewController
+- (IBAction)CancelButton:(id)sender;
 
 @end
