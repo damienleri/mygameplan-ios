@@ -1,15 +1,16 @@
 //
-//  AppointmentsViewController.m
+//  SignsViewController.m
 //  My Game Plan
 //
 //  Created by Damien Leri on 6/29/13.
 //  Copyright (c) 2013 Damien Leri. All rights reserved.
 //
 
-#import "AppointmentsViewController.h"
-#import "Appointment.h"
+#import "SignsViewController.h"
+#import "Sign.h"
+#import "SignOccurance.h"
 
-@implementation AppointmentsViewController;
+@implementation SignsViewController;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -47,13 +48,13 @@
 -(NSFetchedResultsController *)fetchedResultsController {
 	if (fetchedResultsController == nil) {
 		NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-		[fetchRequest setEntity:[Appointment entityDescription]];
+		[fetchRequest setEntity:[Sign entityDescription]];
 		
 		[fetchRequest setSortDescriptors:[NSArray arrayWithObjects:[[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO], nil]];
 		[fetchRequest setFetchBatchSize:30];
 		
 		self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-																			managedObjectContext:[Appointment managedObjectContextForCurrentThread]
+																			managedObjectContext:[Sign managedObjectContextForCurrentThread]
 																			  sectionNameKeyPath:nil
 																					   cacheName:nil];
 		
@@ -71,17 +72,17 @@
 
 -(void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
 	
-    Appointment *appointment = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    Sign *sign = [self.fetchedResultsController objectAtIndexPath:indexPath];
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"EEEE MMMM d, YYYY"];
-    NSString *dateString = [dateFormat stringFromDate:appointment.date];
-	cell.textLabel.text = [NSString stringWithFormat:@"%@", dateString];
+    NSString *dateString = [dateFormat stringFromDate:sign.date];
+	cell.textLabel.text = [NSString stringWithFormat:@"%@", sign.name];
     
 }
 
 -(UITableViewCell *)tableView:(UITableView *)_tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
-	static NSString *CellIdentifier = @"AppointmentCell";
+	static NSString *CellIdentifier = @"Sign";
 	
 	UITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	
@@ -104,9 +105,9 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        Appointment *appointment = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        [appointment delete];
-        [Appointment commit];
+        Sign *sign = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        [sign delete];
+        [Sign commit];
     }
 }
 
@@ -128,22 +129,22 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    [self performSegueWithIdentifier:@"showSign" sender:self];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"showAppointment"]) {
-        NSLog(@"segging from appt");
+    if ([[segue identifier] isEqualToString:@"showSign"]) {
+
         NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
-        AppointmentViewController *nextView = segue.destinationViewController;
-        nextView.appointment = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        SignViewController *nextView = segue.destinationViewController;
+        nextView.sign = [self.fetchedResultsController objectAtIndexPath:indexPath];
         
     }
     
 }
 
-- (IBAction)unwindToAppointments:(UIStoryboardSegue *)segue {
+- (IBAction)unwindToSigns:(UIStoryboardSegue *)segue {
     [self.navigationController popViewControllerAnimated:YES];
 }
 

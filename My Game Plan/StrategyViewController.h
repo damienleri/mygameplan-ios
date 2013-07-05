@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EditStrategyViewController.h"
 
 @interface StrategyViewController : UIViewController
-- (IBAction)CancelButton:(id)sender;
+@property(nonatomic,strong) Strategy *strategy;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 @end

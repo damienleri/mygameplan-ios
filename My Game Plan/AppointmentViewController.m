@@ -1,19 +1,11 @@
-//
-//  AppointmentViewController.m
-//  My Game Plan
-//
-//  Created by Damien Leri on 6/29/13.
-//  Copyright (c) 2013 Damien Leri. All rights reserved.
-//
-
 #import "AppointmentViewController.h"
-#import "Appointment.h"
 
 @interface AppointmentViewController ()
 
 @end
 
 @implementation AppointmentViewController
+@synthesize appointment, nameLabel, dateLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,26 +19,33 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+    nameLabel.text = appointment.name;
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"EEEE MMMM d, YYYY"];
+    NSString *dateString = [dateFormat stringFromDate:appointment.date];
+    dateLabel.text = dateString;
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)CancelButton:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"editAppointment"]) {
+        
+        EditAppointmentViewController *nextView = segue.destinationViewController;
+        nextView.isEditing = YES;
+        nextView.appointment = appointment;
+    }
 }
-- (IBAction)SaveButton:(id)sender {
 
-    Appointment *appointment = [Appointment newEntity];
-    [appointment setName:@"test 2"];
-    [appointment setDate:[NSDate date]];
-    [Appointment commit];
 
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
-}
 @end

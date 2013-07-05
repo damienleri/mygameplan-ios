@@ -1,11 +1,3 @@
-//
-//  StrategyViewController.m
-//  My Game Plan
-//
-//  Created by Damien Leri on 6/29/13.
-//  Copyright (c) 2013 Damien Leri. All rights reserved.
-//
-
 #import "StrategyViewController.h"
 
 @interface StrategyViewController ()
@@ -13,6 +5,7 @@
 @end
 
 @implementation StrategyViewController
+@synthesize strategy, nameLabel, dateLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,21 +19,32 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    nameLabel.text = strategy.name;
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"EEEE MMMM d, YYYY"];
+    NSString *dateString = [dateFormat stringFromDate:strategy.date];
+    dateLabel.text = dateString;
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (IBAction)CancelButton:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"editStrategy"]) {
+        
+        EditStrategyViewController *nextView = segue.destinationViewController;
+        nextView.isEditing = YES;
+        nextView.strategy = strategy;
+    }
 }
-- (IBAction)SaveButton:(id)sender {
-    // Todo: save!
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
+
 
 @end

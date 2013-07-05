@@ -7,11 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EditSignViewController.h"
 
 @interface SignViewController : UIViewController
-@property(nonatomic,strong) Sign *sign;
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *noteLabel;
+- (IBAction)CancelButton:(id)sender;
 
 @end

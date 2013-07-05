@@ -1,3 +1,11 @@
+//
+//  SignViewController.m
+//  My Game Plan
+//
+//  Created by Damien Leri on 6/29/13.
+//  Copyright (c) 2013 Damien Leri. All rights reserved.
+//
+
 #import "SignViewController.h"
 
 @interface SignViewController ()
@@ -5,7 +13,6 @@
 @end
 
 @implementation SignViewController
-@synthesize sign, nameLabel, noteLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -19,29 +26,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+	// Do any additional setup after loading the view.
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    nameLabel.text = sign.name;
-    noteLabel.text = sign.note;
-}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([[segue identifier] isEqualToString:@"editSign"]) {
-        
-        EditSignViewController *nextView = segue.destinationViewController;
-        nextView.isEditing = YES;
-        nextView.sign = sign;
-    }
+- (IBAction)CancelButton:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
-
-
 @end

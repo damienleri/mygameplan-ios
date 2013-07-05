@@ -2,13 +2,15 @@
 //  AppointmentViewController.h
 //  My Game Plan
 //
-//  Created by Damien Leri on 6/29/13.
+//  Created by damien on 7/1/13.
 //  Copyright (c) 2013 Damien Leri. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+#import "EditAppointmentViewController.h"
 
 @interface AppointmentViewController : UIViewController
-- (IBAction)CancelButton:(id)sender;
-
+@property(nonatomic,strong) Appointment *appointment;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @end

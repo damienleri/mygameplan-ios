@@ -3,5 +3,5 @@
 
 @interface Appointment : AppointmentEntity
 
--(NSString *)fullName;
+// -(NSString *)fullName;
 @end

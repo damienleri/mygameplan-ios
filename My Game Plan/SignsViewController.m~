@@ -1,15 +1,15 @@
 //
-//  AppointmentsViewController.m
+//  StrategiesViewController.m
 //  My Game Plan
 //
 //  Created by Damien Leri on 6/29/13.
 //  Copyright (c) 2013 Damien Leri. All rights reserved.
 //
 
-#import "AppointmentsViewController.h"
-#import "Appointment.h"
+#import "StrategiesViewController.h"
+#import "Strategy.h"
 
-@implementation AppointmentsViewController;
+@implementation StrategiesViewController;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -47,13 +47,13 @@
 -(NSFetchedResultsController *)fetchedResultsController {
 	if (fetchedResultsController == nil) {
 		NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-		[fetchRequest setEntity:[Appointment entityDescription]];
+		[fetchRequest setEntity:[Strategy entityDescription]];
 		
 		[fetchRequest setSortDescriptors:[NSArray arrayWithObjects:[[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO], nil]];
 		[fetchRequest setFetchBatchSize:30];
 		
 		self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-																			managedObjectContext:[Appointment managedObjectContextForCurrentThread]
+																			managedObjectContext:[Strategy managedObjectContextForCurrentThread]
 																			  sectionNameKeyPath:nil
 																					   cacheName:nil];
 		
@@ -71,17 +71,17 @@
 
 -(void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
 	
-    Appointment *appointment = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    Strategy *strategy = [self.fetchedResultsController objectAtIndexPath:indexPath];
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"EEEE MMMM d, YYYY"];
-    NSString *dateString = [dateFormat stringFromDate:appointment.date];
-	cell.textLabel.text = [NSString stringWithFormat:@"%@", dateString];
+    NSString *dateString = [dateFormat stringFromDate:strategy.date];
+	cell.textLabel.text = [NSString stringWithFormat:@"%@", strategy.name];
     
 }
 
 -(UITableViewCell *)tableView:(UITableView *)_tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
-	static NSString *CellIdentifier = @"AppointmentCell";
+	static NSString *CellIdentifier = @"Strategy";
 	
 	UITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	
@@ -104,9 +104,9 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        Appointment *appointment = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        [appointment delete];
-        [Appointment commit];
+        Strategy *strategy = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        [strategy delete];
+        [Strategy commit];
     }
 }
 
@@ -128,22 +128,22 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    [self performSegueWithIdentifier:@"showStrategy" sender:self];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"showAppointment"]) {
-        NSLog(@"segging from appt");
+    if ([[segue identifier] isEqualToString:@"showStrategy"]) {
+
         NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
-        AppointmentViewController *nextView = segue.destinationViewController;
-        nextView.appointment = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        StrategyViewController *nextView = segue.destinationViewController;
+        nextView.strategy = [self.fetchedResultsController objectAtIndexPath:indexPath];
         
     }
     
 }
 
-- (IBAction)unwindToAppointments:(UIStoryboardSegue *)segue {
+- (IBAction)unwindToStrategies:(UIStoryboardSegue *)segue {
     [self.navigationController popViewControllerAnimated:YES];
 }
 

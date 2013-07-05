@@ -1,5 +1,5 @@
 //
-//  AppointmentsViewController.h
+//  SignsViewController.h
 //  My Game Plan
 //
 //  Created by Damien Leri on 6/29/13.
@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "RHCoreDataTableViewController.h"
-#import "AppointmentViewController.h"
+#import "SignViewController.h"
 
-@interface AppointmentsViewController : RHCoreDataTableViewController
+@interface SignsViewController : RHCoreDataTableViewController
 
 @end
