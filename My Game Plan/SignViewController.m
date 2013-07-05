@@ -1,5 +1,7 @@
 #import "SignViewController.h"
-
+#import "SignEvent.h"
+#import "Sign.h"
+#import "SignEventsViewController.h"
 @interface SignViewController ()
 
 @end
@@ -40,6 +42,19 @@
         EditSignViewController *nextView = segue.destinationViewController;
         nextView.isEditing = YES;
         nextView.sign = sign;
+    }
+    if ([[segue identifier] isEqualToString:@"newSignEvent"]) {
+        SignEvent *event = [SignEvent newEntity];
+        event.date = [NSDate date];
+//        NSLog(@"creating Sign Event");
+        [sign addEventsObject:event];
+        [SignEvent commit];
+        [Sign commit];
+    }
+    if ([[segue identifier] isEqualToString:@"signEvents"]) {
+        SignEventsViewController *nextView = segue.destinationViewController;
+        nextView.sign = sign;
+//        NSLog(@"yo");
     }
 }
 

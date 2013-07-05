@@ -10,6 +10,9 @@
 #import "RHCoreDataTableViewController.h"
 #import "SignViewController.h"
 
-@interface SignsViewController : RHCoreDataTableViewController
+//@interface SignsViewController : RHCoreDataTableViewController
+@interface SignsViewController : UITableViewController
+@property (strong,nonatomic) NSArray *types;
+@property (strong,nonatomic) NSMutableArray *signs;
 
 @end

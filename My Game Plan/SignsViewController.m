@@ -11,6 +11,7 @@
 #import "SignOccurance.h"
 
 @implementation SignsViewController;
+@synthesize types, signs;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -24,7 +25,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    types = [[NSArray alloc] initWithObjects:@"Thought", @"Feeling", @"Action", nil];
+}
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    signs = [[NSMutableArray alloc]init];
+    //signs = [[NSMutableArray alloc] initWithArray:types];
+//    NSArray *allSigns = [Sign fetchAll];
+//    for (Sign *thisSign in allSigns)   NSLog(@"%@, %@", testSign.name, testSign.type);
+
+    for (NSString *type in types) {
+        [signs addObject: (NSArray *) [Sign fetchWithPredicate:[NSPredicate predicateWithFormat:@"type=%@", type]]];
+    }
+    
     //self.navigationItem.leftBarButtonItem = self.editButtonItem;
     
     // Uncomment the following line to preserve selection between presentations.
@@ -41,9 +55,17 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return [signs count];
 }
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // Return the number of rows in the section.
+//    return 0;
+//    NSLog(@"%i rows for section %i", [[signs objectAtIndex:section] count], section);
+
+   return [[signs objectAtIndex:section] count];
+}
 
 -(NSFetchedResultsController *)fetchedResultsController {
 	if (fetchedResultsController == nil) {
@@ -70,15 +92,11 @@
 	return fetchedResultsController;
 }
 
--(void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-	
-    Sign *sign = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"EEEE MMMM d, YYYY"];
-    NSString *dateString = [dateFormat stringFromDate:sign.date];
-	cell.textLabel.text = [NSString stringWithFormat:@"%@", sign.name];
-    
-}
+
+
+//-(void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+	   
+//}
 
 -(UITableViewCell *)tableView:(UITableView *)_tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
@@ -90,26 +108,25 @@
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
 	}
     
-	[self configureCell:cell atIndexPath:indexPath];
+//    Sign *sign = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    NSArray *sectionArray = [signs objectAtIndex: 0];
+    Sign *sign = [sectionArray objectAtIndex: indexPath.row];
+	cell.textLabel.text = sign.name;
+//	[self configureCell:cell atIndexPath:indexPath];
     
 	return cell;
 }
-
--(NSString *)tableView:(UITableView *)_tableView titleForFooterInSection:(NSInteger)section {
-	if (_tableView == self.tableView) {
-        return @"";
-    } else {
-        return @""; // search tableview
-    }
+-(NSString *)tableView:(UITableView *)_tableView titleForHeaderInSection:(NSInteger)section {
+    return [[NSString alloc] initWithFormat:@"%@s", [types objectAtIndex:section] ];
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        Sign *sign = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        [sign delete];
-        [Sign commit];
-    }
-}
+//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+//    if (editingStyle == UITableViewCellEditingStyleDelete) {
+//        Sign *sign = [self.fetchedResultsController objectAtIndexPath:indexPath];
+//        [sign delete];
+//        [Sign commit];
+//    }
+//}
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {

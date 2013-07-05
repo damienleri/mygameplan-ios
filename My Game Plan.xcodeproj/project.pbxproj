@@ -10,12 +10,14 @@
 		6D20886017862AD90059C2E4 /* DoneSignViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D20885F17862AD90059C2E4 /* DoneSignViewController.m */; };
 		6D350D98178604A60034D541 /* SignsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D350D97178604A60034D541 /* SignsViewController.m */; };
 		6D350D9B178604D30034D541 /* EditSignViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D350D9A178604D30034D541 /* EditSignViewController.m */; };
-		6D350DA1178606B70034D541 /* SignEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D350D9D178606B70034D541 /* SignEntity.m */; };
 		6D350DA2178606B70034D541 /* Sign.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D350D9F178606B70034D541 /* Sign.m */; };
+		6D365F0D1786F8230013E629 /* StrategyEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D365F0C1786F8230013E629 /* StrategyEntity.m */; };
+		6D365F131786F9230013E629 /* AppointmentEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D365F121786F9230013E629 /* AppointmentEntity.m */; };
+		6D365F161786F9A60013E629 /* SignEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D365F151786F9A60013E629 /* SignEntity.m */; };
+		6D365F191786F9A70013E629 /* SignEventEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D365F181786F9A70013E629 /* SignEventEntity.m */; };
 		6D4BFE2517825AE600DFDDFC /* StrategiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4BFE2417825AE600DFDDFC /* StrategiesViewController.m */; };
 		6D4BFE2917825FB700DFDDFC /* EditStrategyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4BFE2817825FB700DFDDFC /* EditStrategyViewController.m */; };
 		6D4BFE2C1782601D00DFDDFC /* Strategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4BFE2B1782601D00DFDDFC /* Strategy.m */; };
-		6D4BFE2F1782607400DFDDFC /* StrategyEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4BFE2E1782607400DFDDFC /* StrategyEntity.m */; };
 		6D5FD58A177FC1CC00603DA6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D5FD583177FC1CC00603DA6 /* main.m */; };
 		6D5FD58B177FC1CC00603DA6 /* My Game Plan-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D5FD584177FC1CC00603DA6 /* My Game Plan-Info.plist */; };
 		6D5FD58C177FC1CC00603DA6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D5FD586177FC1CC00603DA6 /* InfoPlist.strings */; };
@@ -97,7 +99,6 @@
 		6D5FD67B177FD43A00603DA6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5FD67A177FD43A00603DA6 /* CoreData.framework */; };
 		6D5FD680177FD4E200603DA6 /* RHManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D5FD67D177FD4E200603DA6 /* RHManagedObject.m */; };
 		6D5FD681177FD4E200603DA6 /* RHManagedObjectContextManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D5FD67F177FD4E200603DA6 /* RHManagedObjectContextManager.m */; };
-		6D5FD685177FD68E00603DA6 /* AppointmentEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D5FD684177FD68E00603DA6 /* AppointmentEntity.m */; };
 		6D5FD688177FD7E700603DA6 /* Appointment.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D5FD687177FD7E700603DA6 /* Appointment.m */; };
 		6D689FBA177FDB770067461B /* RHManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D5FD67D177FD4E200603DA6 /* RHManagedObject.m */; };
 		6D689FBB177FDB830067461B /* RHManagedObjectContextManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D5FD67F177FD4E200603DA6 /* RHManagedObjectContextManager.m */; };
@@ -106,7 +107,6 @@
 		6D689FC2177FE12E0067461B /* RHCoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D689FC0177FE12E0067461B /* RHCoreDataTableViewController.m */; };
 		6DCBC9AE17864BE900CE232A /* PlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCBC9AD17864BE900CE232A /* PlanViewController.m */; };
 		6DCBC9B11786E30C00CE232A /* SignEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCBC9B01786E30C00CE232A /* SignEventsViewController.m */; };
-		6DCBC9B61786E48A00CE232A /* SignEventEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCBC9B21786E48A00CE232A /* SignEventEntity.m */; };
 		6DCBC9B71786E48A00CE232A /* SignEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCBC9B41786E48A00CE232A /* SignEvent.m */; };
 		6DE7E48D177F9842006C7038 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DE7E48C177F9842006C7038 /* UIKit.framework */; };
 		6DE7E48F177F9842006C7038 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DE7E48E177F9842006C7038 /* Foundation.framework */; };
@@ -141,18 +141,22 @@
 		6D350D99178604C10034D541 /* SignsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignsViewController.h; sourceTree = "<group>"; };
 		6D350D9A178604D30034D541 /* EditSignViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditSignViewController.m; sourceTree = "<group>"; };
 		6D350D9C178604D90034D541 /* EditSignViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditSignViewController.h; sourceTree = "<group>"; };
-		6D350D9D178606B70034D541 /* SignEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignEntity.m; sourceTree = "<group>"; };
-		6D350D9E178606B70034D541 /* SignEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignEntity.h; sourceTree = "<group>"; };
 		6D350D9F178606B70034D541 /* Sign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sign.m; sourceTree = "<group>"; };
 		6D350DA0178606B70034D541 /* Sign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sign.h; sourceTree = "<group>"; };
+		6D365F0B1786F8230013E629 /* StrategyEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrategyEntity.h; sourceTree = "<group>"; };
+		6D365F0C1786F8230013E629 /* StrategyEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrategyEntity.m; sourceTree = "<group>"; };
+		6D365F111786F9230013E629 /* AppointmentEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppointmentEntity.h; path = "My Game Plan/AppointmentEntity.h"; sourceTree = "<group>"; };
+		6D365F121786F9230013E629 /* AppointmentEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppointmentEntity.m; path = "My Game Plan/AppointmentEntity.m"; sourceTree = "<group>"; };
+		6D365F141786F9A60013E629 /* SignEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignEntity.h; path = "My Game Plan/SignEntity.h"; sourceTree = "<group>"; };
+		6D365F151786F9A60013E629 /* SignEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignEntity.m; path = "My Game Plan/SignEntity.m"; sourceTree = "<group>"; };
+		6D365F171786F9A70013E629 /* SignEventEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignEventEntity.h; path = "My Game Plan/SignEventEntity.h"; sourceTree = "<group>"; };
+		6D365F181786F9A70013E629 /* SignEventEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignEventEntity.m; path = "My Game Plan/SignEventEntity.m"; sourceTree = "<group>"; };
 		6D4BFE2417825AE600DFDDFC /* StrategiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrategiesViewController.m; sourceTree = "<group>"; };
 		6D4BFE2617825D0400DFDDFC /* StrategiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrategiesViewController.h; sourceTree = "<group>"; };
 		6D4BFE2717825F1E00DFDDFC /* EditStrategyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditStrategyViewController.h; sourceTree = "<group>"; };
 		6D4BFE2817825FB700DFDDFC /* EditStrategyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditStrategyViewController.m; sourceTree = "<group>"; };
 		6D4BFE2A17825FF400DFDDFC /* Strategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Strategy.h; sourceTree = "<group>"; };
 		6D4BFE2B1782601D00DFDDFC /* Strategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Strategy.m; sourceTree = "<group>"; };
-		6D4BFE2D1782606200DFDDFC /* StrategyEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrategyEntity.h; sourceTree = "<group>"; };
-		6D4BFE2E1782607400DFDDFC /* StrategyEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrategyEntity.m; sourceTree = "<group>"; };
 		6D5FD583177FC1CC00603DA6 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6D5FD584177FC1CC00603DA6 /* My Game Plan-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "My Game Plan-Info.plist"; sourceTree = "<group>"; };
 		6D5FD585177FC1CC00603DA6 /* My Game Plan-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "My Game Plan-Prefix.pch"; sourceTree = "<group>"; };
@@ -240,8 +244,6 @@
 		6D5FD67D177FD4E200603DA6 /* RHManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHManagedObject.m; sourceTree = "<group>"; };
 		6D5FD67E177FD4E200603DA6 /* RHManagedObjectContextManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHManagedObjectContextManager.h; sourceTree = "<group>"; };
 		6D5FD67F177FD4E200603DA6 /* RHManagedObjectContextManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHManagedObjectContextManager.m; sourceTree = "<group>"; };
-		6D5FD683177FD68E00603DA6 /* AppointmentEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentEntity.h; sourceTree = "<group>"; };
-		6D5FD684177FD68E00603DA6 /* AppointmentEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentEntity.m; sourceTree = "<group>"; };
 		6D5FD686177FD7E700603DA6 /* Appointment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Appointment.h; sourceTree = "<group>"; };
 		6D5FD687177FD7E700603DA6 /* Appointment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Appointment.m; sourceTree = "<group>"; };
 		6D689FBD177FE12E0067461B /* RHCoreDataCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHCoreDataCollectionViewController.h; sourceTree = "<group>"; };
@@ -253,8 +255,6 @@
 		6DCBC9AD17864BE900CE232A /* PlanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanViewController.m; sourceTree = "<group>"; };
 		6DCBC9AF1786E30C00CE232A /* SignEventsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignEventsViewController.h; sourceTree = "<group>"; };
 		6DCBC9B01786E30C00CE232A /* SignEventsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignEventsViewController.m; sourceTree = "<group>"; };
-		6DCBC9B21786E48A00CE232A /* SignEventEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignEventEntity.m; sourceTree = "<group>"; };
-		6DCBC9B31786E48A00CE232A /* SignEventEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignEventEntity.h; sourceTree = "<group>"; };
 		6DCBC9B41786E48A00CE232A /* SignEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignEvent.m; sourceTree = "<group>"; };
 		6DCBC9B51786E48A00CE232A /* SignEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignEvent.h; sourceTree = "<group>"; };
 		6DE7E489177F9842006C7038 /* My Game Plan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Game Plan.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -307,12 +307,10 @@
 		6D5FD682177FD61600603DA6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				6DCBC9B21786E48A00CE232A /* SignEventEntity.m */,
-				6DCBC9B31786E48A00CE232A /* SignEventEntity.h */,
+				6D365F0B1786F8230013E629 /* StrategyEntity.h */,
+				6D365F0C1786F8230013E629 /* StrategyEntity.m */,
 				6DCBC9B41786E48A00CE232A /* SignEvent.m */,
 				6DCBC9B51786E48A00CE232A /* SignEvent.h */,
-				6D350D9D178606B70034D541 /* SignEntity.m */,
-				6D350D9E178606B70034D541 /* SignEntity.h */,
 				6D350D9F178606B70034D541 /* Sign.m */,
 				6D350DA0178606B70034D541 /* Sign.h */,
 				6D5FD630177FCE7100603DA6 /* Model.xcdatamodeld */,
@@ -320,10 +318,6 @@
 				6D5FD687177FD7E700603DA6 /* Appointment.m */,
 				6D4BFE2A17825FF400DFDDFC /* Strategy.h */,
 				6D4BFE2B1782601D00DFDDFC /* Strategy.m */,
-				6D5FD683177FD68E00603DA6 /* AppointmentEntity.h */,
-				6D4BFE2D1782606200DFDDFC /* StrategyEntity.h */,
-				6D5FD684177FD68E00603DA6 /* AppointmentEntity.m */,
-				6D4BFE2E1782607400DFDDFC /* StrategyEntity.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -346,6 +340,12 @@
 		6DE7E480177F9842006C7038 = {
 			isa = PBXGroup;
 			children = (
+				6D365F171786F9A70013E629 /* SignEventEntity.h */,
+				6D365F181786F9A70013E629 /* SignEventEntity.m */,
+				6D365F141786F9A60013E629 /* SignEntity.h */,
+				6D365F151786F9A60013E629 /* SignEntity.m */,
+				6D365F111786F9230013E629 /* AppointmentEntity.h */,
+				6D365F121786F9230013E629 /* AppointmentEntity.m */,
 				6DE7E492177F9842006C7038 /* My Game Plan */,
 				6DE7E4C4177F9842006C7038 /* My Game PlanTests */,
 				6DE7E48B177F9842006C7038 /* Frameworks */,
@@ -706,23 +706,23 @@
 				6D5FD62C177FC80B00603DA6 /* StrategyViewController.m in Sources */,
 				6D5FD62F177FC8CC00603DA6 /* ContactViewController.m in Sources */,
 				6D5FD632177FCE7100603DA6 /* Model.xcdatamodeld in Sources */,
-				6D5FD685177FD68E00603DA6 /* AppointmentEntity.m in Sources */,
 				6D689FC1177FE12E0067461B /* RHCoreDataCollectionViewController.m in Sources */,
 				6D689FC2177FE12E0067461B /* RHCoreDataTableViewController.m in Sources */,
 				6DFC171F1781CE3B003E6EA7 /* AppointmentViewController.m in Sources */,
 				6D4BFE2517825AE600DFDDFC /* StrategiesViewController.m in Sources */,
 				6D4BFE2917825FB700DFDDFC /* EditStrategyViewController.m in Sources */,
 				6D4BFE2C1782601D00DFDDFC /* Strategy.m in Sources */,
-				6D4BFE2F1782607400DFDDFC /* StrategyEntity.m in Sources */,
 				6D350D98178604A60034D541 /* SignsViewController.m in Sources */,
 				6D350D9B178604D30034D541 /* EditSignViewController.m in Sources */,
-				6D350DA1178606B70034D541 /* SignEntity.m in Sources */,
 				6D350DA2178606B70034D541 /* Sign.m in Sources */,
 				6D20886017862AD90059C2E4 /* DoneSignViewController.m in Sources */,
 				6DCBC9AE17864BE900CE232A /* PlanViewController.m in Sources */,
 				6DCBC9B11786E30C00CE232A /* SignEventsViewController.m in Sources */,
-				6DCBC9B61786E48A00CE232A /* SignEventEntity.m in Sources */,
 				6DCBC9B71786E48A00CE232A /* SignEvent.m in Sources */,
+				6D365F0D1786F8230013E629 /* StrategyEntity.m in Sources */,
+				6D365F131786F9230013E629 /* AppointmentEntity.m in Sources */,
+				6D365F161786F9A60013E629 /* SignEntity.m in Sources */,
+				6D365F191786F9A70013E629 /* SignEventEntity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -928,7 +928,7 @@
 				6DCBC9AB1786326400CE232A /* Model 2.xcdatamodel */,
 				6D5FD631177FCE7100603DA6 /* Model.xcdatamodel */,
 			);
-			currentVersion = 6DCBC9AB1786326400CE232A /* Model 2.xcdatamodel */;
+			currentVersion = 6D5FD631177FCE7100603DA6 /* Model.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

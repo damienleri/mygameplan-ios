@@ -13,21 +13,22 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="events" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SignEventEntity" syncable="YES"/>
+        <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SignEventEntity" inverseName="sign" inverseEntity="SignEventEntity" syncable="YES"/>
     </entity>
     <entity name="SignEventEntity" representedClassName="SignEventEntity" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="sign" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SignEntity" inverseName="events" inverseEntity="SignEntity" syncable="YES"/>
     </entity>
     <entity name="StrategyEntity" representedClassName="StrategyEntity" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="AppointmentEntity" positionX="0" positionY="0" width="128" height="75"/>
-        <element name="ContactEntity" positionX="160" positionY="192" width="128" height="75"/>
-        <element name="SignEntity" positionX="160" positionY="192" width="128" height="120"/>
-        <element name="SignEventEntity" positionX="160" positionY="192" width="128" height="75"/>
-        <element name="StrategyEntity" positionX="160" positionY="192" width="128" height="75"/>
+        <element name="AppointmentEntity" positionX="0" positionY="0" width="128" height="73"/>
+        <element name="ContactEntity" positionX="160" positionY="192" width="128" height="73"/>
+        <element name="SignEntity" positionX="286" positionY="351" width="128" height="118"/>
+        <element name="SignEventEntity" positionX="-27" positionY="432" width="128" height="88"/>
+        <element name="StrategyEntity" positionX="-27" positionY="189" width="128" height="73"/>
     </elements>
 </model>

@@ -79,6 +79,7 @@
 - (IBAction)SaveButton:(id)sender {
     [sign setName:[nameInput text]];
     [sign setNote: [noteInput text]];
+    [sign setType: [typeInput text]];
     [Sign commit];
     
 
@@ -174,10 +175,8 @@
 }
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    NSLog(@"%@", pickerView);
     
     if ([pickerView isEqual:typePickerView]) {
-        NSLog(@"types");
         return [types objectAtIndex:row];
     } else {
         return [suggestions objectAtIndex:row];
@@ -191,6 +190,7 @@
 
         typeInput.text = [types objectAtIndex:row];
         [typeInput resignFirstResponder]; // Close picker
+        
     } else {
         suggestionsInput.text = [suggestions objectAtIndex:row];
         if ([suggestionsInput.text isEqual: @"Other"]) {

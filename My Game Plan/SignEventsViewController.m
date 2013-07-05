@@ -7,12 +7,14 @@
 //
 
 #import "SignEventsViewController.h"
+#import "SignEvent.h"
 
 @interface SignEventsViewController ()
 
 @end
 
 @implementation SignEventsViewController
+@synthesize sign, events;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -27,6 +29,9 @@
 {
     [super viewDidLoad];
 
+    events = (NSArray *) [sign.events allObjects];
+//    NSLog(@"%i", [sign.events count]);
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -44,16 +49,14 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [events count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -61,8 +64,12 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
-    
+    SignEvent *signEvent = [events objectAtIndex: indexPath.row];
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"EEEE MMMM d, YYYY"];
+    NSString *dateString = [dateFormat stringFromDate:signEvent.date];
+
+	cell.textLabel.text = [NSString stringWithFormat:@"%@", dateString];
     return cell;
 }
 

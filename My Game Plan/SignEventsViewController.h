@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Sign.h"
 
 @interface SignEventsViewController : UITableViewController
-
+@property(nonatomic,strong) Sign *sign;
+@property(nonatomic,strong) NSArray *events;
 @end

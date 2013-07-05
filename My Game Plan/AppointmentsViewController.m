@@ -75,7 +75,8 @@
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"EEEE MMMM d, YYYY"];
     NSString *dateString = [dateFormat stringFromDate:appointment.date];
-	cell.textLabel.text = [NSString stringWithFormat:@"%@", dateString];
+	cell.textLabel.text = appointment.name; // [NSString stringWithFormat:@"%@", dateString];
+    cell.detailTextLabel.text = dateString;
     
 }
 
@@ -86,7 +87,7 @@
 	UITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	
 	if (cell == nil) {
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
 	}
     
 	[self configureCell:cell atIndexPath:indexPath];
@@ -134,7 +135,7 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"showAppointment"]) {
-        NSLog(@"segging from appt");
+//        NSLog(@"segging from appt");
         NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
         AppointmentViewController *nextView = segue.destinationViewController;
         nextView.appointment = [self.fetchedResultsController objectAtIndexPath:indexPath];
