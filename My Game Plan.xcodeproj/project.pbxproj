@@ -105,6 +105,9 @@
 		6D689FC1177FE12E0067461B /* RHCoreDataCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D689FBE177FE12E0067461B /* RHCoreDataCollectionViewController.m */; };
 		6D689FC2177FE12E0067461B /* RHCoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D689FC0177FE12E0067461B /* RHCoreDataTableViewController.m */; };
 		6DCBC9AE17864BE900CE232A /* PlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCBC9AD17864BE900CE232A /* PlanViewController.m */; };
+		6DCBC9B11786E30C00CE232A /* SignEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCBC9B01786E30C00CE232A /* SignEventsViewController.m */; };
+		6DCBC9B61786E48A00CE232A /* SignEventEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCBC9B21786E48A00CE232A /* SignEventEntity.m */; };
+		6DCBC9B71786E48A00CE232A /* SignEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCBC9B41786E48A00CE232A /* SignEvent.m */; };
 		6DE7E48D177F9842006C7038 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DE7E48C177F9842006C7038 /* UIKit.framework */; };
 		6DE7E48F177F9842006C7038 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DE7E48E177F9842006C7038 /* Foundation.framework */; };
 		6DE7E491177F9842006C7038 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DE7E490177F9842006C7038 /* CoreGraphics.framework */; };
@@ -248,6 +251,12 @@
 		6DCBC9AB1786326400CE232A /* Model 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 2.xcdatamodel"; sourceTree = "<group>"; };
 		6DCBC9AC17864BE900CE232A /* PlanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanViewController.h; sourceTree = "<group>"; };
 		6DCBC9AD17864BE900CE232A /* PlanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanViewController.m; sourceTree = "<group>"; };
+		6DCBC9AF1786E30C00CE232A /* SignEventsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignEventsViewController.h; sourceTree = "<group>"; };
+		6DCBC9B01786E30C00CE232A /* SignEventsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignEventsViewController.m; sourceTree = "<group>"; };
+		6DCBC9B21786E48A00CE232A /* SignEventEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignEventEntity.m; sourceTree = "<group>"; };
+		6DCBC9B31786E48A00CE232A /* SignEventEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignEventEntity.h; sourceTree = "<group>"; };
+		6DCBC9B41786E48A00CE232A /* SignEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignEvent.m; sourceTree = "<group>"; };
+		6DCBC9B51786E48A00CE232A /* SignEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignEvent.h; sourceTree = "<group>"; };
 		6DE7E489177F9842006C7038 /* My Game Plan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Game Plan.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DE7E48C177F9842006C7038 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6DE7E48E177F9842006C7038 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -298,6 +307,10 @@
 		6D5FD682177FD61600603DA6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6DCBC9B21786E48A00CE232A /* SignEventEntity.m */,
+				6DCBC9B31786E48A00CE232A /* SignEventEntity.h */,
+				6DCBC9B41786E48A00CE232A /* SignEvent.m */,
+				6DCBC9B51786E48A00CE232A /* SignEvent.h */,
 				6D350D9D178606B70034D541 /* SignEntity.m */,
 				6D350D9E178606B70034D541 /* SignEntity.h */,
 				6D350D9F178606B70034D541 /* Sign.m */,
@@ -371,6 +384,8 @@
 				6D350D97178604A60034D541 /* SignsViewController.m */,
 				6D5FD682177FD61600603DA6 /* Model */,
 				6DE7E4A4177F9842006C7038 /* MainStoryboard_iPhone.storyboard */,
+				6DCBC9AF1786E30C00CE232A /* SignEventsViewController.h */,
+				6DCBC9B01786E30C00CE232A /* SignEventsViewController.m */,
 				6DE7E49B177F9842006C7038 /* AppDelegate.h */,
 				6DE7E49C177F9842006C7038 /* AppDelegate.m */,
 				6DE7E4D8177FB7F3006C7038 /* AppointmentsViewController.h */,
@@ -705,6 +720,9 @@
 				6D350DA2178606B70034D541 /* Sign.m in Sources */,
 				6D20886017862AD90059C2E4 /* DoneSignViewController.m in Sources */,
 				6DCBC9AE17864BE900CE232A /* PlanViewController.m in Sources */,
+				6DCBC9B11786E30C00CE232A /* SignEventsViewController.m in Sources */,
+				6DCBC9B61786E48A00CE232A /* SignEventEntity.m in Sources */,
+				6DCBC9B71786E48A00CE232A /* SignEvent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

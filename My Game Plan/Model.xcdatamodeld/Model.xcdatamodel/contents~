@@ -13,11 +13,9 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="events" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SignEventEntity" syncable="YES"/>
     </entity>
-    <entity name="SignEventEntity" representedClassName="SignEventEntity" syncable="YES">
+    <entity name="SignOccuranceEntity" representedClassName="SignOccuranceEntity" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="StrategyEntity" representedClassName="StrategyEntity" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
@@ -26,8 +24,8 @@
     <elements>
         <element name="AppointmentEntity" positionX="0" positionY="0" width="128" height="75"/>
         <element name="ContactEntity" positionX="160" positionY="192" width="128" height="75"/>
-        <element name="SignEntity" positionX="160" positionY="192" width="128" height="120"/>
-        <element name="SignEventEntity" positionX="160" positionY="192" width="128" height="75"/>
+        <element name="SignEntity" positionX="160" positionY="192" width="128" height="105"/>
+        <element name="SignOccuranceEntity" positionX="160" positionY="192" width="128" height="60"/>
         <element name="StrategyEntity" positionX="160" positionY="192" width="128" height="75"/>
     </elements>
 </model>

@@ -1273,10 +1273,10 @@
             </objects>
             <point key="canvasLocation" x="2008" y="-180"/>
         </scene>
-        <!--Table View Controller - Past Ocurrances-->
+        <!--Sign Events View Controller - Past Occurrences-->
         <scene sceneID="zA9-uo-7eS">
             <objects>
-                <tableViewController id="2F1-CO-eFF" sceneMemberID="viewController">
+                <tableViewController id="2F1-CO-eFF" customClass="SignEventsViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="9tE-PL-RYQ">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1297,7 +1297,7 @@
                             <outlet property="delegate" destination="2F1-CO-eFF" id="wb8-75-Ehp"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Past Ocurrances" id="RAc-uD-V88"/>
+                    <navigationItem key="navigationItem" title="Past Occurrences" id="RAc-uD-V88"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="560-JX-6pk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1378,6 +1378,113 @@
         <image name="53-house.png" width="22" height="22"/>
         <image name="83-calendar.png" width="23" height="25"/>
     </resources>
+    <classes>
+        <class className="AppointmentViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AppointmentViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="AppointmentsViewController" superclassName="RHCoreDataTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AppointmentsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="unwindToAppointments:" candidateClass="UIStoryboardSegue"/>
+            </relationships>
+        </class>
+        <class className="ContactViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ContactViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="CancelButton:"/>
+                <relationship kind="action" name="SaveButton:"/>
+            </relationships>
+        </class>
+        <class className="DoneSignViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DoneSignViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="returnClick:"/>
+                <relationship kind="action" name="returnPlanClick:"/>
+            </relationships>
+        </class>
+        <class className="EditAppointmentViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EditAppointmentViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="CancelButton:"/>
+                <relationship kind="action" name="SaveButton:"/>
+                <relationship kind="action" name="callDelete:"/>
+                <relationship kind="action" name="callDp:"/>
+                <relationship kind="outlet" name="dateButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="deleteButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="nameInput" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="EditSignViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EditSignViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="CancelButton:"/>
+                <relationship kind="action" name="SaveButton:"/>
+                <relationship kind="action" name="callDelete:"/>
+                <relationship kind="action" name="callDp:"/>
+                <relationship kind="outlet" name="deleteButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="nameInput" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="noteInput" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="suggestionsInput" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="typeInput" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="EditStrategyViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EditStrategyViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="CancelButton:"/>
+                <relationship kind="outlet" name="deleteButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="nameInput" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="PlanViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PlanViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="unwindToPlan:" candidateClass="UIStoryboardSegue"/>
+            </relationships>
+        </class>
+        <class className="RHCoreDataTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RHCoreDataTableViewController.h"/>
+        </class>
+        <class className="SignEventsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SignEventsViewController.h"/>
+        </class>
+        <class className="SignViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SignViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="noteLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SignsViewController" superclassName="RHCoreDataTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SignsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="unwindToSigns:" candidateClass="UIStoryboardSegue"/>
+            </relationships>
+        </class>
+        <class className="StrategiesViewController" superclassName="RHCoreDataTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/StrategiesViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="unwindToStrategies:" candidateClass="UIStoryboardSegue"/>
+            </relationships>
+        </class>
+        <class className="StrategyViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/StrategyViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="UIStoryboardSegue" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
