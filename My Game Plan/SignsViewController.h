@@ -14,5 +14,8 @@
 @interface SignsViewController : UITableViewController
 @property (strong,nonatomic) NSArray *types;
 @property (strong,nonatomic) NSMutableArray *signs;
+@property (strong,nonatomic) NSMutableArray *sectionLabels;
+
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end

@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NUIAppearance.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
+-(void) customizeBarButtons;
+-(UIColor*) colorWithHexString: (NSString *)hex;
 @end

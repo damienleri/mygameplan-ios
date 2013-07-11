@@ -11,8 +11,5 @@
 	return @"Model";
 }
 
--(NSString *)fullName {
-    return [NSString stringWithFormat:@"%@ %@", self.name, self.name];
-}
 
 @end

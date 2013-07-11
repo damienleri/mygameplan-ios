@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>DEVELOPMENT_APP_KEY</key>
+	<string>YFMWzaN8QGGKnd3b7Uj4bw</string>
+	<key>DEVELOPMENT_APP_SECRET</key>
+	<string>SSPKB21HRr6RU8xxReDD_g</string>
+	<key>PRODUCTION_APP_KEY</key>
+	<string>qUiBgJlpRVCFayqdG92kFw</string>
+	<key>PRODUCTION_APP_SECRET</key>
+	<string>gJBHe1CnSSqZwfvHu-Nl6g</string>
+	<key>APP_STORE_OR_AD_HOC_BUILD</key>
+	<string>YES</string>
+</dict>
+</plist>

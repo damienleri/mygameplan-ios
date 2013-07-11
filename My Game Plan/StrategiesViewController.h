@@ -11,5 +11,6 @@
 #import "StrategyViewController.h"
 
 @interface StrategiesViewController : RHCoreDataTableViewController
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end

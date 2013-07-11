@@ -5,7 +5,7 @@
 @end
 
 @implementation StrategyViewController
-@synthesize strategy, nameLabel, dateLabel;
+@synthesize strategy, nameLabel, dateLabel,noteLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -25,6 +25,8 @@
     [super viewWillAppear:animated];
     
     nameLabel.text = strategy.name;
+    noteLabel.text = strategy.note;
+    
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"EEEE MMMM d, YYYY"];
     NSString *dateString = [dateFormat stringFromDate:strategy.date];

@@ -13,5 +13,6 @@
 
 @dynamic date;
 @dynamic name;
+@dynamic note;
 
 @end

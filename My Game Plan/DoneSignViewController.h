@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DoneSignViewController : UIViewController
+@interface DoneSignViewController : UITableViewController
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end

@@ -11,7 +11,8 @@
 #import "SignOccurance.h"
 
 @implementation SignsViewController;
-@synthesize types, signs;
+
+@synthesize types, signs, tableView, sectionLabels;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -26,23 +27,35 @@
 {
     [super viewDidLoad];
     types = [[NSArray alloc] initWithObjects:@"Thought", @"Feeling", @"Action", nil];
+//    self.tableView.backgroundView = nil;
 }
 
 - (void) viewWillAppear:(BOOL)animated
 {
+
     signs = [[NSMutableArray alloc]init];
     //signs = [[NSMutableArray alloc] initWithArray:types];
 //    NSArray *allSigns = [Sign fetchAll];
 //    for (Sign *thisSign in allSigns)   NSLog(@"%@, %@", testSign.name, testSign.type);
-
+    sectionLabels = [[NSMutableArray alloc]init];
+    
     for (NSString *type in types) {
-        [signs addObject: (NSArray *) [Sign fetchWithPredicate:[NSPredicate predicateWithFormat:@"type=%@", type]]];
+        NSArray *objects = [Sign fetchWithPredicate:[NSPredicate predicateWithFormat:@"type=%@", type]];
+        if ([objects count] > 0) {
+           [signs addObject: (NSArray *) objects];
+            NSString *label = [[NSString alloc] initWithFormat:@"%@s", type ];
+            [sectionLabels addObject: label];
+        }
     }
     
     //self.navigationItem.leftBarButtonItem = self.editButtonItem;
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
+    [tableView reloadData];
+    [super viewWillAppear:animated];
+    
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -60,43 +73,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-//    return 0;
-//    NSLog(@"%i rows for section %i", [[signs objectAtIndex:section] count], section);
 
    return [[signs objectAtIndex:section] count];
 }
 
--(NSFetchedResultsController *)fetchedResultsController {
-	if (fetchedResultsController == nil) {
-		NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-		[fetchRequest setEntity:[Sign entityDescription]];
-		
-		[fetchRequest setSortDescriptors:[NSArray arrayWithObjects:[[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO], nil]];
-		[fetchRequest setFetchBatchSize:30];
-		
-		self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-																			managedObjectContext:[Sign managedObjectContextForCurrentThread]
-																			  sectionNameKeyPath:nil
-																					   cacheName:nil];
-		
-		fetchedResultsController.delegate = self;
-		
-		
-		NSError *error = nil;
-		if (![fetchedResultsController performFetch:&error]) {
-			NSLog(@"Unresolved error: %@", [error localizedDescription]);
-		}
-    }
-	
-	return fetchedResultsController;
-}
 
-
-
-//-(void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-	   
-//}
 
 -(UITableViewCell *)tableView:(UITableView *)_tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
@@ -108,25 +89,15 @@
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
 	}
     
-//    Sign *sign = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    NSArray *sectionArray = [signs objectAtIndex: 0];
-    Sign *sign = [sectionArray objectAtIndex: indexPath.row];
+    Sign *sign = [[signs objectAtIndex: indexPath.section] objectAtIndex: indexPath.row];
 	cell.textLabel.text = sign.name;
-//	[self configureCell:cell atIndexPath:indexPath];
     
 	return cell;
 }
 -(NSString *)tableView:(UITableView *)_tableView titleForHeaderInSection:(NSInteger)section {
-    return [[NSString alloc] initWithFormat:@"%@s", [types objectAtIndex:section] ];
+    return [sectionLabels objectAtIndex:section];
 }
 
-//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-//    if (editingStyle == UITableViewCellEditingStyleDelete) {
-//        Sign *sign = [self.fetchedResultsController objectAtIndexPath:indexPath];
-//        [sign delete];
-//        [Sign commit];
-//    }
-//}
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
@@ -155,7 +126,8 @@
 
         NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
         SignViewController *nextView = segue.destinationViewController;
-        nextView.sign = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        Sign *sign = [[signs objectAtIndex: indexPath.section] objectAtIndex: indexPath.row];
+        nextView.sign = sign;
         
     }
     

@@ -10,7 +10,8 @@
 
 
 @implementation EditStrategyViewController
-@synthesize nameInput, strategy, isEditing,deleteButton;
+@synthesize nameInput, strategy, isEditing,deleteButton, noteInput, suggestions, suggestionsInput, suggestionPickerView;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,12 +29,26 @@
     
     if (isEditing) {
         nameInput.text = strategy.name;
+        noteInput.text = strategy.note;
+        suggestionsInput.hidden = YES;
+        nameInput.hidden = NO;
         deleteButton.hidden = NO;
     } else {
-       
         strategy = [Strategy newEntity];
         strategy.date = [NSDate date];
     }
+    
+
+    suggestions = [[NSArray alloc] initWithObjects:@"Suggestion 1", @"Suggestion 2", @"Other", nil];
+    
+
+    
+
+    suggestionPickerView = [[UIPickerView alloc] init];
+    suggestionPickerView.dataSource = self;
+    suggestionPickerView.delegate = self;
+    suggestionPickerView.showsSelectionIndicator = YES;
+    suggestionsInput.inputView = suggestionPickerView;
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,10 +64,12 @@
 }
 - (IBAction)SaveButton:(id)sender {
     [strategy setName:[nameInput text]];
+    [strategy setNote: [noteInput text]];
     [Strategy commit];
     
+    [self dismissViewControllerAnimated:YES completion:nil];
 
-  [self dismissViewControllerAnimated:YES completion:nil];
+
 }
 - (void)changeDate:(UIDatePicker *)sender {
     [strategy setDate: sender.date];
@@ -127,6 +144,37 @@
         [strategy delete];
         [self performSegueWithIdentifier:@"unwindToStrategies" sender:self];
     }
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+        return [suggestions count];
+
+}
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    
+        return [suggestions objectAtIndex:row];
+
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row   inComponent:(NSInteger)component
+{
+
+        suggestionsInput.text = [suggestions objectAtIndex:row];
+        if ([suggestionsInput.text isEqual: @"Other"]) {
+             nameInput.text = @"";
+             nameInput.hidden = NO;
+         } else {
+            nameInput.text = [suggestions objectAtIndex:row];
+         }
+        [suggestionsInput resignFirstResponder];
+
 }
 
 @end

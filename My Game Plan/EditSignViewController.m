@@ -28,25 +28,18 @@
 	// Do any additional setup after loading the view.
     
     if (isEditing) {
-//        NSLog(sign.type);
         nameInput.text = sign.name;
         noteInput.text = sign.note;
         typeInput.text = sign.type;
         suggestionsInput.hidden = YES;
-        if ([sign.type isEqual:@"Other"]) {
-//            typeInput.hidden = NO;
-        } else {
-//            suggestionsInput.text = sign.type;
-        }
+        nameInput.hidden = NO;
         deleteButton.hidden = NO;
     } else {
-       
         sign = [Sign newEntity];
         sign.date = [NSDate date];
     }
     
     types = [[NSArray alloc] initWithObjects:@"Thought", @"Feeling", @"Action", nil];
-    
     suggestions = [[NSArray alloc] initWithObjects:@"Suggestion 1", @"Suggestion 2", @"Other", nil];
     
 
@@ -54,14 +47,14 @@
     typePickerView = [[UIPickerView alloc] init];
     typePickerView.dataSource = self;
     typePickerView.delegate = self;
-    //    pickerView.showsSelectionIndicator = YES;
+    typePickerView.showsSelectionIndicator = YES;
     typeInput.inputView = typePickerView;
 
 
     suggestionPickerView = [[UIPickerView alloc] init];
     suggestionPickerView.dataSource = self;
     suggestionPickerView.delegate = self;
-    //    pickerView.showsSelectionIndicator = YES;
+    suggestionPickerView.showsSelectionIndicator = YES;
     suggestionsInput.inputView = suggestionPickerView;
 }
 
@@ -185,15 +178,15 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row   inComponent:(NSInteger)component
 {
-//    if (component == 0) {
-    if ([pickerView isEqual:typePickerView]) {
 
-        typeInput.text = [types objectAtIndex:row];
+    if ([pickerView isEqual:typePickerView]) {
+    typeInput.text = [types objectAtIndex:row];
         [typeInput resignFirstResponder]; // Close picker
         
     } else {
         suggestionsInput.text = [suggestions objectAtIndex:row];
         if ([suggestionsInput.text isEqual: @"Other"]) {
+             nameInput.text = @"";
              nameInput.hidden = NO;
          } else {
             nameInput.text = [suggestions objectAtIndex:row];

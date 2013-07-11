@@ -59,9 +59,10 @@
 
     [appointment setName:[nameInput text]];
     [Appointment commit];
-    
 
-  [self dismissViewControllerAnimated:YES completion:nil];
+    [self performSegueWithIdentifier:@"unwindToAppointments" sender:self];
+
+//  [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)changeDate:(UIDatePicker *)sender {
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];

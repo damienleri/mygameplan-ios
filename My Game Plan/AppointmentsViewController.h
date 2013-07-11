@@ -11,5 +11,7 @@
 #import "AppointmentViewController.h"
 
 @interface AppointmentsViewController : RHCoreDataTableViewController
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+
 
 @end

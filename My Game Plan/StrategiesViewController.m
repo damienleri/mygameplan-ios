@@ -72,9 +72,6 @@
 -(void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
 	
     Strategy *strategy = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"EEEE MMMM d, YYYY"];
-    NSString *dateString = [dateFormat stringFromDate:strategy.date];
 	cell.textLabel.text = [NSString stringWithFormat:@"%@", strategy.name];
     
 }
@@ -144,7 +141,10 @@
 }
 
 - (IBAction)unwindToStrategies:(UIStoryboardSegue *)segue {
+  NSLog(@"unwound to strategies");
     [self.navigationController popViewControllerAnimated:YES];
+    [self.tableView reloadData];
+
 }
 
 

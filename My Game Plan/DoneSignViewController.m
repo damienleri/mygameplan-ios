@@ -7,12 +7,13 @@
 //
 
 #import "DoneSignViewController.h"
-
+#import "Config.h"
 @interface DoneSignViewController ()
 
 @end
 
 @implementation DoneSignViewController
+@synthesize tableView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,13 +35,32 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (IBAction)returnClick:(id)sender {
+- (IBAction)closeClick:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-- (IBAction)returnPlanClick:(id)sender {
 
 
-    [self performSegueWithIdentifier:@"unwindToPlan" sender:self];
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 1 && indexPath.row == 0) {
+//        [self dismissViewControllerAnimated:YES completion:nil];
+        [self performSegueWithIdentifier:@"unwindToStrategies" sender:self];
+
+        
+    } else if (indexPath.section == 1 && indexPath.row == 1) {
+//        [self dismissViewControllerAnimated:YES completion:nil];
+        [self performSegueWithIdentifier:@"unwindToContacts" sender:self];
+
+        
+    } else     if (indexPath.section == 1 && indexPath.row == 2) {
+
+        
+        NSString *phoneNumber = [NSString stringWithFormat:@"tel://%@", [[Config sharedInstance] objectForKey:@"hotline_phone"]];
+        
+        NSURL *URL = [NSURL URLWithString:phoneNumber];
+        [[UIApplication sharedApplication] openURL:URL];
+        
+    }
 }
 
 @end

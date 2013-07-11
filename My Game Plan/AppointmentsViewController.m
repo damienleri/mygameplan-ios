@@ -11,6 +11,7 @@
 
 @implementation AppointmentsViewController;
 
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -146,6 +147,7 @@
 
 - (IBAction)unwindToAppointments:(UIStoryboardSegue *)segue {
     [self.navigationController popViewControllerAnimated:YES];
+    [self.tableView reloadData];
 }
 
 

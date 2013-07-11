@@ -13,5 +13,6 @@
 @property(nonatomic,strong) Strategy *strategy;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *noteLabel;
 
 @end
