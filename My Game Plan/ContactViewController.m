@@ -49,7 +49,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 1 && indexPath.row == 2) {
-        // Hard-coded for now
         NSString *phone = phoneLabel.text;
         NSString *phoneURL = [NSString stringWithFormat:@"tel://%@", phone];
         NSURL *URL = [NSURL URLWithString:phoneURL];

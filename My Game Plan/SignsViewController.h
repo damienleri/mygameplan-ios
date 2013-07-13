@@ -12,7 +12,7 @@
 
 //@interface SignsViewController : RHCoreDataTableViewController
 @interface SignsViewController : UITableViewController
-@property (strong,nonatomic) NSArray *types;
+@property (strong,nonatomic) NSMutableArray *types;
 @property (strong,nonatomic) NSMutableArray *signs;
 @property (strong,nonatomic) NSMutableArray *sectionLabels;
 

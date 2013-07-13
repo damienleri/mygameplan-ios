@@ -36,7 +36,6 @@
 
 -(void)loadConfig {
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"config" ofType:@"json"];
-    NSLog(@"Loading config", filePath);
     NSData *jsonData = [NSData dataWithContentsOfFile:filePath];
     
     NSError *e = nil;
@@ -46,6 +45,14 @@
         NSLog(@"Error parsing JSON: %@", e);
         
     }
+}
+
+-(void) callHotline {
+    NSString *phoneNumber = [NSString stringWithFormat:@"tel://%@", [self objectForKey:@"hotline_phone"]];
+				      
+    NSURL *URL = [NSURL URLWithString:phoneNumber];
+    [[UIApplication sharedApplication] openURL:URL];
+
 }
 
 @end

@@ -48,7 +48,7 @@
 	if (fetchedResultsController == nil) {
 		NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
 		[fetchRequest setEntity:[Strategy entityDescription]];
-		
+		[fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"name != null"]];
 		[fetchRequest setSortDescriptors:[NSArray arrayWithObjects:[[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO], nil]];
 		[fetchRequest setFetchBatchSize:30];
 		
@@ -141,7 +141,6 @@
 }
 
 - (IBAction)unwindToStrategies:(UIStoryboardSegue *)segue {
-  NSLog(@"unwound to strategies");
     [self.navigationController popViewControllerAnimated:YES];
     [self.tableView reloadData];
 

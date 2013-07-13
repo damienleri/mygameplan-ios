@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "EditStrategyViewController.h"
 
-@interface StrategyViewController : UIViewController
+@interface StrategyViewController : UITableViewController
 @property(nonatomic,strong) Strategy *strategy;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *noteLabel;
+@property (weak, nonatomic) IBOutlet UITableViewCell *appCell;
 
 @end

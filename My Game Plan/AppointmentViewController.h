@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "EditAppointmentViewController.h"
 
-@interface AppointmentViewController : UIViewController
+@interface AppointmentViewController : UITableViewController
+@property (weak, nonatomic) IBOutlet UILabel *noteLabel;
 @property(nonatomic,strong) Appointment *appointment;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @end

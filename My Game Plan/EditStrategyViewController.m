@@ -7,10 +7,11 @@
 //
 
 #import "EditStrategyViewController.h"
-
+#import "Config.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation EditStrategyViewController
-@synthesize nameInput, strategy, isEditing,deleteButton, noteInput, suggestions, suggestionsInput, suggestionPickerView;
+@synthesize nameInput, strategy, isEditing,deleteButton, noteInput, suggestions, suggestionsInput, suggestionPickerView, app, tableView, deleteCell;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -25,30 +26,59 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    [self.tableView setEditing:NO];
+
+
+
+    suggestions = [[Config sharedInstance] objectForKey:@"coping_strategies"];
+
     
     if (isEditing) {
         nameInput.text = strategy.name;
         noteInput.text = strategy.note;
         suggestionsInput.hidden = YES;
         nameInput.hidden = NO;
-        deleteButton.hidden = NO;
+
+	//	apps = [[Config sharedInstance] objectForKey:@"coping_strategy_app_labels"];
+	//	appInput.text = strategy.app;
+
     } else {
         strategy = [Strategy newEntity];
+        deleteCell.hidden = YES;
+        nameInput.hidden = YES;
         strategy.date = [NSDate date];
+	//        appInput.text = [apps objectAtIndex:0];
     }
     
 
-    suggestions = [[NSArray alloc] initWithObjects:@"Suggestion 1", @"Suggestion 2", @"Other", nil];
-    
 
-    
+
+
+
+//    appPickerView = [[UIPickerView alloc] init];
+//    appPickerView.dataSource = self;
+//    appPickerView.delegate = self;
+//    appPickerView.showsSelectionIndicator = YES;
+//    appInput.inputView = appPickerView;
 
     suggestionPickerView = [[UIPickerView alloc] init];
     suggestionPickerView.dataSource = self;
     suggestionPickerView.delegate = self;
     suggestionPickerView.showsSelectionIndicator = YES;
     suggestionsInput.inputView = suggestionPickerView;
+    
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
+}
+
+-(void)dismissKeyboard {
+    [suggestionsInput resignFirstResponder];
+    [nameInput resignFirstResponder];
+    [noteInput resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning
@@ -58,19 +88,25 @@
 }
 
 - (IBAction)CancelButton:(id)sender {
-
   [self dismissViewControllerAnimated:YES completion:nil];
 
 }
 - (IBAction)SaveButton:(id)sender {
+    if ([nameInput.text isEqualToString:@""]) {
+        suggestionsInput.layer.borderWidth = 1.0f;
+        suggestionsInput.layer.borderColor = [[UIColor redColor] CGColor];
+        return;
+    }
+
     [strategy setName:[nameInput text]];
     [strategy setNote: [noteInput text]];
+    [strategy setApp_id: [app objectForKey:@"id"]];
+    [strategy setApp_title: [app objectForKey:@"title"]];
+    [strategy setApp_subtitle: [app objectForKey:@"subtitle"]];
     [Strategy commit];
-    
     [self dismissViewControllerAnimated:YES completion:nil];
-
-
 }
+
 - (void)changeDate:(UIDatePicker *)sender {
     [strategy setDate: sender.date];
 }
@@ -148,8 +184,7 @@
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-        return [suggestions count];
-
+    return [suggestions count];
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
@@ -158,23 +193,24 @@
 }
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    
-        return [suggestions objectAtIndex:row];
-
+    return [[suggestions objectAtIndex:row] objectForKey:@"title"];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row   inComponent:(NSInteger)component
 {
 
-        suggestionsInput.text = [suggestions objectAtIndex:row];
-        if ([suggestionsInput.text isEqual: @"Other"]) {
-             nameInput.text = @"";
-             nameInput.hidden = NO;
-         } else {
-            nameInput.text = [suggestions objectAtIndex:row];
-         }
-        [suggestionsInput resignFirstResponder];
+    suggestionsInput.text = [[suggestions objectAtIndex:row] objectForKey:@"title"];
 
+    if ([suggestionsInput.text isEqual: @"Other"]) {
+      nameInput.text = @"";
+      nameInput.hidden = NO;
+      app = nil;
+
+    } else {
+      app = [[suggestions objectAtIndex:row] objectForKey:@"app"];
+      nameInput.text = suggestionsInput.text;
+    }
+    [suggestionsInput resignFirstResponder];
 }
 
 @end

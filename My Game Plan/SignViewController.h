@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "EditSignViewController.h"
 
-@interface SignViewController : UIViewController
+@interface SignViewController : UITableViewController <UIActionSheetDelegate>
+
 @property(nonatomic,strong) Sign *sign;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *noteLabel;
-
+-(IBAction)showActionSheet:(id)sender;
 @end

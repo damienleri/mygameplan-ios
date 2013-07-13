@@ -14,5 +14,10 @@
 @dynamic date;
 @dynamic name;
 @dynamic note;
+@dynamic app_id;
+@dynamic app_title;
+@dynamic app_subtitle;
+
+
 
 @end

@@ -49,7 +49,7 @@
 	if (fetchedResultsController == nil) {
 		NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
 		[fetchRequest setEntity:[Appointment entityDescription]];
-		
+		[fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"name != null"]];
 		[fetchRequest setSortDescriptors:[NSArray arrayWithObjects:[[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO], nil]];
 		[fetchRequest setFetchBatchSize:30];
 		

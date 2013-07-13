@@ -5,7 +5,7 @@
 @end
 
 @implementation AppointmentViewController
-@synthesize appointment, nameLabel, dateLabel;
+@synthesize appointment, nameLabel, dateLabel, noteLabel, tableView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -25,6 +25,7 @@
     [super viewWillAppear:animated];
 
     nameLabel.text = appointment.name;
+    noteLabel.text = appointment.note;
     
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"EEEE MMMM d, YYYY"];

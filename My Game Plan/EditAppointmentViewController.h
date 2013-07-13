@@ -9,11 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "Appointment.h"
 
-@interface EditAppointmentViewController : UIViewController
+@interface EditAppointmentViewController : UITableViewController
 - (IBAction)CancelButton:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *nameInput;
 @property (weak, nonatomic) IBOutlet UIButton *dateButton;
 @property(nonatomic) BOOL isEditing;
 @property(nonatomic,strong) Appointment *appointment;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UITableViewCell *deleteCell;
+@property (weak, nonatomic) IBOutlet UITextField *noteInput;
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 @end

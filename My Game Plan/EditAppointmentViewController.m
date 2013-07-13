@@ -7,10 +7,10 @@
 //
 
 #import "EditAppointmentViewController.h"
-
+#import <QuartzCore/QuartzCore.h>
 
 @implementation EditAppointmentViewController
-@synthesize nameInput, dateButton, appointment, isEditing,deleteButton;
+@synthesize nameInput, dateButton, appointment, isEditing,deleteButton, deleteCell,tableView,noteInput;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -24,13 +24,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    [self.tableView setEditing:NO];
+
     
     if (isEditing) {
         nameInput.text = appointment.name;
-        deleteButton.hidden = NO;
+
     } else {
-       
+        deleteCell.hidden = YES;       
         appointment = [Appointment newEntity];
         appointment.date = [NSDate date];
     }
@@ -41,6 +42,18 @@
     [dateFormat setDateFormat:@"EEEE MMMM d, YYYY"];
     NSString *dateString = [dateFormat stringFromDate:appointment.date];
     [dateButton setTitle:dateString forState:UIControlStateNormal];
+
+
+   UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
+
+}
+
+-(void)dismissKeyboard {
+    [nameInput resignFirstResponder];
 
 }
 
@@ -56,13 +69,18 @@
 
 }
 - (IBAction)SaveButton:(id)sender {
-
-    [appointment setName:[nameInput text]];
+    if ([nameInput.text isEqualToString:@""]) {
+        nameInput.layer.borderWidth = 1.0f;
+        nameInput.layer.borderColor = [[UIColor redColor] CGColor];
+        return;
+    }
+    
+    
+    
+    [appointment setName: nameInput.text];
     [Appointment commit];
 
     [self performSegueWithIdentifier:@"unwindToAppointments" sender:self];
-
-//  [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)changeDate:(UIDatePicker *)sender {
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];

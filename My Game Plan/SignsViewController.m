@@ -9,7 +9,7 @@
 #import "SignsViewController.h"
 #import "Sign.h"
 #import "SignOccurance.h"
-
+#import "Config.h"
 @implementation SignsViewController;
 
 @synthesize types, signs, tableView, sectionLabels;
@@ -26,8 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    types = [[NSArray alloc] initWithObjects:@"Thought", @"Feeling", @"Action", nil];
-//    self.tableView.backgroundView = nil;
+    types = [[Config sharedInstance] objectForKey:@"warning_sign_type_labels"];
 }
 
 - (void) viewWillAppear:(BOOL)animated

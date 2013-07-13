@@ -7,10 +7,11 @@
 //
 
 #import "EditSignViewController.h"
-
+#import "Config.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation EditSignViewController
-@synthesize nameInput, sign, isEditing,deleteButton, types,typeInput, noteInput, suggestions, suggestionsInput, typePickerView, suggestionPickerView;
+@synthesize nameInput, sign, isEditing,deleteButton, types,typeInput, noteInput, suggestions, suggestionsInput, typePickerView, suggestionPickerView, deleteCell,nameCell,suggestionsCell, tableView;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -26,24 +27,30 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
+
+    [self.tableView setEditing:NO];
+
+   types = [[Config sharedInstance] objectForKey:@"warning_sign_type_labels"];
+    suggestions = [[Config sharedInstance] objectForKey:@"warning_signs"];
+ 
     if (isEditing) {
         nameInput.text = sign.name;
         noteInput.text = sign.note;
         typeInput.text = sign.type;
         suggestionsInput.hidden = YES;
         nameInput.hidden = NO;
-        deleteButton.hidden = NO;
-    } else {
+	typeInput.text = sign.type;
+
+   } else {
         sign = [Sign newEntity];
         sign.date = [NSDate date];
+        deleteCell.hidden = YES;
+        nameInput.hidden = YES;
+	typeInput.text = [types objectAtIndex:0];
     }
-    
-    types = [[NSArray alloc] initWithObjects:@"Thought", @"Feeling", @"Action", nil];
-    suggestions = [[NSArray alloc] initWithObjects:@"Suggestion 1", @"Suggestion 2", @"Other", nil];
-    
+     
 
-    typeInput.text = [types objectAtIndex:0];
+ 
     typePickerView = [[UIPickerView alloc] init];
     typePickerView.dataSource = self;
     typePickerView.delegate = self;
@@ -56,8 +63,24 @@
     suggestionPickerView.delegate = self;
     suggestionPickerView.showsSelectionIndicator = YES;
     suggestionsInput.inputView = suggestionPickerView;
+
+   UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
+
 }
 
+-(void)dismissKeyboard {
+    [nameInput resignFirstResponder];
+    [suggestionsInput resignFirstResponder];
+    [noteInput resignFirstResponder];
+}
+
+- (void)setEditing:(BOOL)flag animated:(BOOL)animated
+{
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -70,6 +93,12 @@
 
 }
 - (IBAction)SaveButton:(id)sender {
+    if ([nameInput.text isEqualToString:@""]) {
+        suggestionsInput.layer.borderWidth = 1.0f;
+        suggestionsInput.layer.borderColor = [[UIColor redColor] CGColor];
+        return;
+    }
+
     [sign setName:[nameInput text]];
     [sign setNote: [noteInput text]];
     [sign setType: [typeInput text]];
@@ -158,7 +187,7 @@
     if ([pickerView isEqual:typePickerView]) {
         return [types count];
     } else {
-        return [suggestions count];
+        return [[suggestions objectForKey: typeInput.text] count];
     }
 }
 
@@ -172,7 +201,7 @@
     if ([pickerView isEqual:typePickerView]) {
         return [types objectAtIndex:row];
     } else {
-        return [suggestions objectAtIndex:row];
+        return [[[suggestions objectForKey: typeInput.text] objectAtIndex:row] objectForKey:@"title"];
     }
 }
 
@@ -184,12 +213,14 @@
         [typeInput resignFirstResponder]; // Close picker
         
     } else {
-        suggestionsInput.text = [suggestions objectAtIndex:row];
+
+        suggestionsInput.text = [[[suggestions objectForKey: typeInput.text] objectAtIndex:row] objectForKey:@"title"];
         if ([suggestionsInput.text isEqual: @"Other"]) {
              nameInput.text = @"";
              nameInput.hidden = NO;
+//            [tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
          } else {
-            nameInput.text = [suggestions objectAtIndex:row];
+             nameInput.text = suggestionsInput.text;
          }
         [suggestionsInput resignFirstResponder];
     }

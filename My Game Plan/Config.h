@@ -13,4 +13,5 @@
 			    // -(void) loadConfig;
 -(id) objectForKey: (NSString *)key;
 + (id) sharedInstance;
+			    -(void) callHotline;
 @end

@@ -24,15 +24,6 @@
     return self;
 }
 
--(void) resourceInSection:(NSString *)section title:(NSString*)title subtitle:(NSString*)subtitle url:(NSString*)url
-{
-    [[resources objectForKey:section] addObject:[[NSMutableDictionary alloc] initWithObjectsAndKeys:
-                                                    title, @"title",
-                                                    subtitle, @"subtitle",
-                                                    url, @"url",
-                                                    nil]];
-
-}
 - (void)viewDidLoad
 {
     [super viewDidLoad];

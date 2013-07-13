@@ -56,10 +56,10 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)hotlineClick:(id)sender {
+  [[Config sharedInstance] callHotline];
+  return;
     NSString *phoneNumber = [NSString stringWithFormat:@"tel://%@", [[Config sharedInstance] objectForKey:@"hotline_phone"]];
 				      
-//                            [[Config sharedInstance] objectForKey:@"hotline_phone"]];
-//    NSLog(phoneNumber);
     NSURL *URL = [NSURL URLWithString:phoneNumber];
     [[UIApplication sharedApplication] openURL:URL];
 }

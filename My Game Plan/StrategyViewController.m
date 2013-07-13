@@ -1,11 +1,11 @@
 #import "StrategyViewController.h"
-
+#import "Config.h"
 @interface StrategyViewController ()
 
 @end
 
 @implementation StrategyViewController
-@synthesize strategy, nameLabel, dateLabel,noteLabel;
+@synthesize strategy, nameLabel, dateLabel,noteLabel,appCell;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,6 +31,10 @@
     [dateFormat setDateFormat:@"EEEE MMMM d, YYYY"];
     NSString *dateString = [dateFormat stringFromDate:strategy.date];
     dateLabel.text = dateString;
+
+    appCell.textLabel.text = strategy.app_title;
+    appCell.detailTextLabel.text = strategy.app_subtitle;
+    
 }
 - (void)didReceiveMemoryWarning
 {
@@ -41,7 +45,6 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"editStrategy"]) {
-        
         EditStrategyViewController *nextView = segue.destinationViewController;
         nextView.isEditing = YES;
         nextView.strategy = strategy;
