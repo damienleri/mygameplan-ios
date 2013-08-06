@@ -8,6 +8,7 @@
 
 #import "HomeViewController.h"
 #import "Config.h"
+#import "Appointment.h"
 
 @interface HomeViewController ()
 
@@ -29,11 +30,7 @@
 {
 
     [super viewDidLoad];
-    if (NO)
-    {
-    NSString *appID = @"284882215";
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: [NSString stringWithFormat:@"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=%@&mt=8", appID]]];
-    }
+    
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -57,11 +54,10 @@
 }
 - (IBAction)hotlineClick:(id)sender {
   [[Config sharedInstance] callHotline];
-  return;
-    NSString *phoneNumber = [NSString stringWithFormat:@"tel://%@", [[Config sharedInstance] objectForKey:@"hotline_phone"]];
-				      
-    NSURL *URL = [NSURL URLWithString:phoneNumber];
-    [[UIApplication sharedApplication] openURL:URL];
+//    NSString *phoneNumber = [NSString stringWithFormat:@"tel://%@", [[Config sharedInstance] objectForKey:@"hotline_phone"]];
+//				      
+//    NSURL *URL = [NSURL URLWithString:phoneNumber];
+//    [[UIApplication sharedApplication] openURL:URL];
 }
 
 @end

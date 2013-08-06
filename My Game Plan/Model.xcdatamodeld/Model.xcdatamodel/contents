@@ -1,41 +1,52 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12E55" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="AppointmentEntity" representedClassName="AppointmentEntity" syncable="YES">
+    <entity name="AppointmentEntity" representedClassName="Appointment" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reminder_1d" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reminder_1h" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reminder_1w" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reminder_2d" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reminder_2w" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reminder_3d" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reminder_4d" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reminder_5d" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reminder_6d" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="ContactEntity" representedClassName="ContactEntity" syncable="YES">
+    <entity name="ContactEntity" representedClassName="Contact" syncable="YES">
         <attribute name="addressBookID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="SignEntity" representedClassName="SignEntity" syncable="YES">
+    <entity name="SignEntity" representedClassName="Sign" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="trigger" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SignEventEntity" inverseName="sign" inverseEntity="SignEventEntity" syncable="YES"/>
     </entity>
-    <entity name="SignEventEntity" representedClassName="SignEventEntity" syncable="YES">
+    <entity name="SignEventEntity" representedClassName="SignEvent" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="sign" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SignEntity" inverseName="events" inverseEntity="SignEntity" syncable="YES"/>
     </entity>
-    <entity name="StrategyEntity" representedClassName="StrategyEntity" syncable="YES">
+    <entity name="StrategyEntity" representedClassName="Strategy" syncable="YES">
         <attribute name="app_id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="app_subtitle" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="app_title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="app_url" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="AppointmentEntity" positionX="0" positionY="0" width="128" height="90"/>
+        <element name="AppointmentEntity" positionX="0" positionY="0" width="128" height="225"/>
         <element name="ContactEntity" positionX="160" positionY="192" width="128" height="105"/>
-        <element name="SignEntity" positionX="286" positionY="351" width="128" height="118"/>
-        <element name="SignEventEntity" positionX="-27" positionY="432" width="128" height="88"/>
-        <element name="StrategyEntity" positionX="-27" positionY="189" width="128" height="135"/>
+        <element name="SignEntity" positionX="286" positionY="351" width="128" height="135"/>
+        <element name="SignEventEntity" positionX="-27" positionY="432" width="128" height="90"/>
+        <element name="StrategyEntity" positionX="-27" positionY="189" width="128" height="150"/>
     </elements>
 </model>

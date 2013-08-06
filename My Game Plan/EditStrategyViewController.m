@@ -27,10 +27,22 @@
 {
     [super viewDidLoad];
     [self.tableView setEditing:NO];
-
-
-
-    suggestions = [[Config sharedInstance] objectForKey:@"coping_strategies"];
+    NSArray *all_suggestions = [[Config sharedInstance] objectForKey:@"coping_strategies"];
+    
+//    NSLog(@"loading suggestions from config %i", [suggestions count]);
+    suggestions = [[NSMutableArray alloc] initWithArray:all_suggestions];
+    NSIndexSet *indexSet = [suggestions indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+            NSString *this_title = [obj objectForKey:@"title"];
+            NSInteger exists = [[Strategy fetchWithPredicate:[NSPredicate predicateWithFormat:@"name=%@", this_title]] count];
+//        NSLog(@"has app %@ ? %i", this_title, exists);
+            if (exists > 0) {
+                return YES;
+            } else {
+                return NO;
+            }
+    }];
+    
+    [suggestions removeObjectsAtIndexes: indexSet];
 
     
     if (isEditing) {
@@ -39,6 +51,9 @@
         suggestionsInput.hidden = YES;
         nameInput.hidden = NO;
 
+        if (strategy.app_id) {
+
+        }
 	//	apps = [[Config sharedInstance] objectForKey:@"coping_strategy_app_labels"];
 	//	appInput.text = strategy.app;
 
@@ -50,10 +65,6 @@
 	//        appInput.text = [apps objectAtIndex:0];
     }
     
-
-
-
-
 
 //    appPickerView = [[UIPickerView alloc] init];
 //    appPickerView.dataSource = self;
@@ -93,16 +104,27 @@
 }
 - (IBAction)SaveButton:(id)sender {
     if ([nameInput.text isEqualToString:@""]) {
-        suggestionsInput.layer.borderWidth = 1.0f;
+        suggestionsInput.layer.borderWidth = 2.0f;
+        suggestionsInput.layer.cornerRadius = 8.0f;
         suggestionsInput.layer.borderColor = [[UIColor redColor] CGColor];
+ //       NSLog(@"required field missing");
         return;
     }
+    
+    if (!strategy.name || ![strategy.name isEqualToString: nameInput.text]) {
 
-    [strategy setName:[nameInput text]];
+             NSLog(@"saving app info %@, %@", strategy.name, nameInput.text);
+        [strategy setApp_id: [app objectForKey:@"id"]];
+        [strategy setApp_title: [app objectForKey:@"title"]];
+        [strategy setApp_subtitle: [app objectForKey:@"subtitle"]];
+        [strategy setApp_url: [app objectForKey:@"url"]];
+    }
+
+    [strategy setName: [nameInput text]];
     [strategy setNote: [noteInput text]];
-    [strategy setApp_id: [app objectForKey:@"id"]];
-    [strategy setApp_title: [app objectForKey:@"title"]];
-    [strategy setApp_subtitle: [app objectForKey:@"subtitle"]];
+
+//    NSLog(@"app url %@ and id %@", strategy.app_url, strategy.app_id);
+    
     [Strategy commit];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -178,6 +200,7 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
     if (buttonIndex == actionSheet.destructiveButtonIndex) {
         [strategy delete];
+        [Strategy commit]; 
         [self performSegueWithIdentifier:@"unwindToStrategies" sender:self];
     }
 }
@@ -198,17 +221,18 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row   inComponent:(NSInteger)component
 {
-
     suggestionsInput.text = [[suggestions objectAtIndex:row] objectForKey:@"title"];
 
     if ([suggestionsInput.text isEqual: @"Other"]) {
-      nameInput.text = @"";
-      nameInput.hidden = NO;
-      app = nil;
+        nameInput.text = @"";
+        nameInput.hidden = NO;
+        app = nil;
 
     } else {
-      app = [[suggestions objectAtIndex:row] objectForKey:@"app"];
-      nameInput.text = suggestionsInput.text;
+        app = [[[suggestions objectAtIndex:row] objectForKey:@"apps"] objectAtIndex:0];
+//        NSLog(@"app %@", [app objectForKey:@"title"]);
+        nameInput.text = suggestionsInput.text;
+
     }
     [suggestionsInput resignFirstResponder];
 }

@@ -12,6 +12,9 @@
 @property(retain,nonatomic) NSMutableDictionary* data;
 			    // -(void) loadConfig;
 -(id) objectForKey: (NSString *)key;
+-(void) setObject: (id) object forKey: (NSString *)key;
+
 + (id) sharedInstance;
-			    -(void) callHotline;
+-(void) callHotline;
+-(NSString*) pushDeviceToken;
 @end

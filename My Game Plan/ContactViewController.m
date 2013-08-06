@@ -13,7 +13,7 @@
 @end
 
 @implementation ContactViewController
-@synthesize firstNameLabel, lastNameLabel, nameLabel, noteLabel, phoneLabel, contact;
+@synthesize firstNameLabel, lastNameLabel, nameLabel, noteLabel, phoneLabel, contact, tableView;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -29,6 +29,7 @@
 {
     [super viewDidLoad];
 
+
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -36,20 +37,41 @@
     if (contact) {
         nameLabel.text = contact.name;
         noteLabel.text = contact.note;
-//        NSLog(@"setting label %@", nameLabel.text);
-        
-        // Get person's name and number from the Address Book
-        ABRecordRef *person = ABAddressBookGetPersonWithRecordID(ABAddressBookCreate(), (ABRecordID) [contact.addressBookID intValue]);
-        [self displayPerson:person];
-        
+        [nameLabel sizeToFit];
+        noteLabel.frame = CGRectMake(noteLabel.frame.origin.x, noteLabel.frame.origin.y, 200, 40);
+
+        [noteLabel sizeToFit];
+        CGSize size = [contact.note sizeWithFont:noteLabel.font forWidth:200.0 lineBreakMode:NSLineBreakByWordWrapping];
+        noteLabel.frame = CGRectMake(noteLabel.frame.origin.x, noteLabel.frame.origin.y, size.width, size.height);
+
+        if ([contact.addressBookID intValue] > 0) {
+            ABRecordRef person = ABAddressBookGetPersonWithRecordID(ABAddressBookCreate(), (ABRecordID) [contact.addressBookID intValue]);
+            if (person) {
+             [self displayPerson:person];
+             CFRelease(person);
+            }
+        }
+        [self.tableView reloadData]; // In case the number of sections (below) has changed since modal dismissal
     }
 
 }
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    if ([contact.addressBookID intValue] > 0) {
+        NSLog(@"address book %@", contact.addressBookID);
+        return 2;
+    }
+    return 1;
+}
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 1 && indexPath.row == 2) {
         NSString *phone = phoneLabel.text;
+        phone = [[phone componentsSeparatedByCharactersInSet:[[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet]] componentsJoinedByString:@""];
+
         NSString *phoneURL = [NSString stringWithFormat:@"tel://%@", phone];
         NSURL *URL = [NSURL URLWithString:phoneURL];
         [[UIApplication sharedApplication] openURL:URL];
@@ -72,7 +94,9 @@
     
     self.firstNameLabel.text = firstName;
     self.lastNameLabel.text = lastName;
-    
+    [self.firstNameLabel sizeToFit];
+    [self.lastNameLabel sizeToFit];
+
     NSString* phone = nil;
     ABMultiValueRef phoneNumbers = ABRecordCopyValue(person,
                                                      kABPersonPhoneProperty);
@@ -83,6 +107,7 @@
         phone = @"";
     }
     self.phoneLabel.text = phone;
+    [self.phoneLabel sizeToFit];
 }
 
 
@@ -91,7 +116,7 @@
     if ([[segue identifier] isEqualToString:@"editContact"]) {
         EditContactViewController *nextView = segue.destinationViewController;
         nextView.contact = contact;
-//        nextView.isEditing = YES;
+//        [nextView setDelegate:self];
     }
 }
 

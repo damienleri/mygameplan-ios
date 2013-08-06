@@ -1,0 +1,125 @@
+{
+    "hotline_phone": "800-273-8255",
+    "appointment_reminder_intervals": [
+        {"field": "reminder_1h", "label": "1 Hour", "hours": 1},
+        {"field": "reminder_1d", "label": "1 Day", "hours": 24},
+        {"field": "reminder_2d", "label": "2 Days", "hours": 48},
+        {"field": "reminder_3d", "label": "3 Days", "hours": 72},
+        {"field": "reminder_4d", "label": "4 Days", "hours": 96},
+        {"field": "reminder_5d", "label": "5 Days", "hours": 120},
+        {"field": "reminder_6d", "label": "6 Days", "hours": 144},
+        {"field": "reminder_1w", "label": "1 Week", "hours": 168},
+        {"field": "reminder_2w", "label": "2 Weeks", "hours": 336}
+    ],
+    "warning_sign_type_labels": ["Thought", "Feeling", "Action"],
+    "resource_labels": ["Crisis Centers", "Twitter", "Facebook"],
+    "resources": {
+	"Crisis Centers": [
+	    {
+		"title": "Crisis Center Locator",
+		"subtitle": "For the US",
+		"url": "http://findtreatment.samhsa.gov/"
+	    }
+	],
+	"Twitter": [
+	    {
+		"title": "Lifeline",
+		"subtitle": "US Suicide Prevention Lifeline",
+		"url": "twitter://user?screen_name=800273TALK"
+	    },
+	    {
+		"title": "Suicide Prevention",
+		"subtitle": "",
+		"url": "twitter://user?screen_name=afspnational"
+	    }
+	],
+	"Facebook": [
+	    {
+		"title": "800-273-TALK",
+		"subtitle": "US Suicide Prevention Lifeline",
+		"url": "fb://profile/11261740684"
+	    },
+	    {
+		"title": "SAMHSA",
+		"subtitle": "Substance Abuse and Mental Health Services Administration",
+		"url": "fb://profile/244833777506"
+	    }
+	]
+    },
+    "warning_signs": {
+	"Thought": [
+	    { "title": "" },
+	    {"title": "I can't handle this", "trigger": ""},
+	    {"title": "I'm overwhelmed", "trigger": ""},
+	    {"title": "I'm worthless", "trigger": ""},
+	    {"title": "Life isn't worth living", "trigger": ""},
+	    {"title": "What's the point?", "trigger": ""},
+	    {"title": "I want to hurt myself", "trigger": "hotline"},
+	    { "title": "Other" }
+	],
+	"Feeling": [
+	    { "title": "" },
+	    {"title": "Out of control", "trigger": ""},
+	    {"title": "Sad", "trigger": ""},
+	    {"title": "Hopeless", "trigger": ""},
+	    {"title": "Angry", "trigger": ""},
+	    {"title": "Alone", "trigger": ""},
+	    {"title": "Frustrated", "trigger": ""},
+	    { "title": "Other" }
+	],
+	"Action": [
+	    { "title": "" },
+	    {"title": "Isolating myself", "trigger": ""},
+	    {"title": "Snapping at others", "trigger": ""},
+	    {"title": "Yelling", "trigger": ""},
+	    {"title": "Taking drugs or drinking", "trigger": ""},
+	    {"title": "Hurting myself", "trigger": "hotline"},
+	    {"title": "Preparing to hurt myself ", "trigger": "hotline"},
+	    { "title": "Other" }
+	]
+    },
+    "coping_strategies": [
+	{ "title": "" },
+	{"title": "Make a list of my strengths", "apps": [{"title":"Catch Notes", "subtitle":"", "id":"355424047"}]},
+	{"title": "Remember times I've coped with hard situations in the past", "apps": [{"title":"Catch Notes", "subtitle":"", "id":"355424047"}]},
+	{"title": "Listen to music", "apps": [{"title":"Music", "subtitle":"", "url":"music:"}]},
+	{"title": "Journal", "apps": [{"title":"Evernote", "subtitle":"", "id":"281796108"}]},
+	{"title": "Write a letter or email", "apps": [{"title":"Email", "subtitle":"", "url":"mailto:"}]},
+	{"title": "Draw", "apps": [{"title":"Draw", "subtitle":"", "id":"325402952"}]},
+	{"title": "Look at art", "apps": [{"title":"MoMA", "subtitle":"Museum of Modern Art", "id":"383990455"}]},
+	{"title": "Take a photo", "apps": [{"title":"", "subtitle":"", "id":"389801252"}]},
+	{"title": "Create something", "apps": [{"title":"", "subtitle":"", "id":""}]},
+	{"title": "Cook something", "apps": [{"title":"How to Cook Everything", "subtitle":"", "id":"367690249"}]},
+	{"title": "Take a walk", "apps": [{"title":"", "subtitle":"", "id":""}]},
+	{"title": "Go for a run", "apps": [{"title":"MayMyRun", "subtitle":"", "id":"291890420"}]},
+	{"title": "Go for a bike ride", "apps": [{"title":"", "subtitle":"", "id":""}]},
+	{"title": "Dance", "apps": [{"title":"", "subtitle":"", "id":""}]},
+	{"title": "Exercise", "apps": [{"title":"Moves", "subtitle":"", "id":"509204969"}]},
+	{"title": "Count to 10", "apps": [{"title":"Just 10 Seconds", "subtitle":"", "id":"354625788"}]},
+	{"title": "Take a hot shower or bath, or do my nails", "apps": [{"title":"", "subtitle":"", "id":""}]},
+	{"title": "Pray", "apps": [{"title":"", "subtitle":"", "id":""}]},
+	{"title": "Take some deep breaths", "apps": [{"title":"Breath2Relax", "subtitle":"", "id":"425720246"}]},
+	{"title": "Meditate or practice mindfulness", "apps": [{"title":"Headspace (on-the-go)", "subtitle":"", "id":"493145008"}]},
+	{"title": "Practice progressive muscle relaxation", "apps": [{"title":"", "subtitle":"", "id":""}]},
+	{"title": "Play my favorite smartphone game", "apps": [{"title":"", "subtitle":"", "id":""}]},
+	{"title": "Watch a favorite movie or tv show", "apps": [{"title":"", "subtitle":"", "id":""}]},
+	{"title": "Read a book", "apps": [{"title":"", "subtitle":"", "url":"ibooks:"}]},
+	{"title": "Look at photos of loved ones", "apps": [{"title":"", "subtitle":"", "id":""}]},
+	{"title": "Run an errand", "apps": [{"title":"", "subtitle":"", "id":""}]},
+	{"title": "Do a household task, fix something, clean or organize ", "apps": [{"title":"", "subtitle":"", "id":""}]},
+	{"title": "Plan some activities", "apps": [{"title":"", "subtitle":"", "id":""}]},
+	{"title": "Rate my mood", "apps": [{"title":"", "subtitle":"", "url":"http://moodhackerapp.com"}]},
+	{"title": "Record my thoughts", "apps": [{"title":"", "subtitle":"", "id":"http://moodhackerapp.com"}]},
+	{"title": "Call a friend", "apps": [{"title":"", "subtitle":"", "id":""}]},
+	{"title": "Call a family member", "apps": [{"title":"", "subtitle":"", "id":""}]},
+	{"title": "Say hi to my neighbor", "apps": [{"title":"", "subtitle":"", "id":""}]},
+	{"title": "Go to a local spot (diner or coffee shop)", "apps": [{"title":"", "subtitle":"", "url":"http://maps.apple.com"}]},
+	{"title": "Go to the barber shop / beauty parlor / nail salon", "apps": [{"title":"", "subtitle":"", "url":"http://maps.apple.com"}]},
+	{"title": "Go to a favorite store", "apps": [{"title":"", "subtitle":"", "id":""}]},
+	{"title": "Go to a bookstore or library", "apps": [{"title":"", "subtitle":"", "url":"http://maps.apple.com"}]},
+	{"title": "Go to church", "apps": [{"title":"", "subtitle":"", "id":""}]},
+	{"title": "Go to the park", "apps": [{"title":"", "subtitle":"", "url":"http://maps.apple.com"}]},
+	{ "title": "Other" }
+    ]
+    
+}

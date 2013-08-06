@@ -33,27 +33,19 @@
 {
 
     signs = [[NSMutableArray alloc]init];
-    //signs = [[NSMutableArray alloc] initWithArray:types];
-//    NSArray *allSigns = [Sign fetchAll];
-//    for (Sign *thisSign in allSigns)   NSLog(@"%@, %@", testSign.name, testSign.type);
     sectionLabels = [[NSMutableArray alloc]init];
     
     for (NSString *type in types) {
         NSArray *objects = [Sign fetchWithPredicate:[NSPredicate predicateWithFormat:@"type=%@", type]];
         if ([objects count] > 0) {
            [signs addObject: (NSArray *) objects];
-            NSString *label = [[NSString alloc] initWithFormat:@"%@s", type ];
+            NSString *label = [[NSString alloc] initWithFormat:@"Warning %@s", type ];
             [sectionLabels addObject: label];
         }
     }
     
-    //self.navigationItem.leftBarButtonItem = self.editButtonItem;
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
     [tableView reloadData];
     [super viewWillAppear:animated];
-    
 
 }
 

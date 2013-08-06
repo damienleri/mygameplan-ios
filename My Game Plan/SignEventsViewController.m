@@ -66,7 +66,7 @@
     
     SignEvent *signEvent = [events objectAtIndex: indexPath.row];
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"EEEE MMMM d, YYYY"];
+    [dateFormat setDateFormat:@"EEEE MMMM d, yyyy 'at' HH:mm"];
     NSString *dateString = [dateFormat stringFromDate:signEvent.date];
 
 	cell.textLabel.text = [NSString stringWithFormat:@"%@", dateString];

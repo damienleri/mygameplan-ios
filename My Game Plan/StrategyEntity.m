@@ -17,6 +17,7 @@
 @dynamic app_id;
 @dynamic app_title;
 @dynamic app_subtitle;
+@dynamic app_url;
 
 
 

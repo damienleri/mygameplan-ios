@@ -11,6 +11,6 @@
 @interface ResourcesViewController : UITableViewController
 @property(nonatomic,strong) NSMutableArray *sectionLabels;
 @property(nonatomic,strong) NSMutableDictionary *resources;
--(void) resourceInSection:(NSString *)section title:(NSString*)title subtitle:(NSString*)subtitle url:(NSString*)url;
+//-(void) resourceInSection:(NSString *)section title:(NSString*)title subtitle:(NSString*)subtitle url:(NSString*)url;
 
 @end

@@ -29,6 +29,18 @@
     
     nameLabel.text = sign.name;
     noteLabel.text = sign.note;
+    [nameLabel sizeToFit];
+    [noteLabel sizeToFit];
+    //    NSLog(@"auto witdth %@", size.width);
+    CGSize size = [sign.note sizeWithFont:noteLabel.font forWidth:200.0 lineBreakMode:NSLineBreakByWordWrapping];
+    noteLabel.frame = CGRectMake(noteLabel.frame.origin.x, noteLabel.frame.origin.y, size.width, size.height);
+//    noteLabel.frame = CGRectMake(noteLabel.frame.origin.x, noteLabel.frame.origin.y, 200, 40);
+
+//    NSLog(@"updating note %@, %@", sign.note, noteLabel.text);
+    
+//    [noteLabel sizeToFit];
+//    NSLog(@"label width %@", noteLabel.frame.size.width);
+    
 }
 - (void)didReceiveMemoryWarning
 {
@@ -49,7 +61,6 @@
     if ([[segue identifier] isEqualToString:@"signEvents"]) {
         SignEventsViewController *nextView = segue.destinationViewController;
         nextView.sign = sign;
-//        NSLog(@"yo");
     }
 }
 
@@ -69,20 +80,32 @@
     }
 }
 
+-(BOOL) hasHotline
+{
+    return [sign.trigger isEqualToString: @"hotline"];
+    // Could also check country here
+}
 -(IBAction)showActionSheet:(id)sender {
-    UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"Next Step" delegate:self cancelButtonTitle:@"Close" destructiveButtonTitle:@"Call Lifeline" otherButtonTitles:@"Coping Strategies", @"Contacts", nil];
+    NSString *redButton = nil;
+
+    if (![sign.trigger isEqualToString: @""]) {
+        redButton = @"Call Lifeline";
+    }
+    UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"Next Step" delegate:self cancelButtonTitle:@"Close" destructiveButtonTitle:redButton otherButtonTitles:@"Coping Strategies", @"Contacts", nil];
     popupQuery.actionSheetStyle = UIActionSheetStyleAutomatic;
     [popupQuery showFromTabBar:self.tabBarController.tabBar];
 }
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 0) {
+    NSInteger buttonOffset = [self hasHotline] ? 0 : -1;
+    
+    if (buttonIndex == buttonOffset) {
         [[Config sharedInstance] callHotline];
         
-    } else if (buttonIndex == 1) {
+    } else if (buttonIndex == buttonOffset + 1) {
       [self performSegueWithIdentifier:@"gotoStrategies" sender:self];
 
-    } else if (buttonIndex == 2) {
+    } else if (buttonIndex == buttonOffset + 2) {
       [self performSegueWithIdentifier:@"gotoContacts" sender:self];
 
     }

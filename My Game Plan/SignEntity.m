@@ -17,5 +17,5 @@
 @dynamic note;
 @dynamic type;
 @dynamic events;
-
+@dynamic trigger;
 @end

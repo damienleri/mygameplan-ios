@@ -74,7 +74,7 @@
 	
     Appointment *appointment = [self.fetchedResultsController objectAtIndexPath:indexPath];
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"EEEE MMMM d, YYYY"];
+    [dateFormat setDateFormat:@"EEEE MMMM d, yyyy 'at' HH:mm"];
     NSString *dateString = [dateFormat stringFromDate:appointment.date];
 	cell.textLabel.text = appointment.name; // [NSString stringWithFormat:@"%@", dateString];
     cell.detailTextLabel.text = dateString;

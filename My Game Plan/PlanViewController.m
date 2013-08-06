@@ -7,7 +7,7 @@
 //
 
 #import "PlanViewController.h"
-
+#import "Config.h"
 @interface PlanViewController ()
 
 @end
@@ -43,5 +43,15 @@
 - (IBAction)unwindToPlan:(UIStoryboardSegue *)segue {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+-(void) tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 3) {
+       [[Config sharedInstance] callHotline];
+    }
+    
+}
+
+
 
 @end

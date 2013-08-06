@@ -12,8 +12,10 @@
 @interface StrategyViewController : UITableViewController
 @property(nonatomic,strong) Strategy *strategy;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *noteLabel;
+//@property (weak, nonatomic) IBOutlet UITableViewSection *appSection;
 @property (weak, nonatomic) IBOutlet UITableViewCell *appCell;
+@property (strong, nonatomic) IBOutlet UITableView *_tableView;
 
 @end

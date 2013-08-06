@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Sign.h"
 
-@interface EditSignViewController : UITableViewController <UIPickerViewDataSource, UIPickerViewDelegate>
+@interface EditSignViewController : UITableViewController <UIPickerViewDataSource, UIPickerViewDelegate, UIActionSheetDelegate>
 - (IBAction)CancelButton:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *nameInput;
 @property (weak, nonatomic) IBOutlet UITextField *typeInput;
@@ -20,13 +20,12 @@
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 @property (strong,nonatomic) NSArray *types;
 @property (strong,nonatomic) NSDictionary *suggestions;
+@property (strong,nonatomic) NSString *suggestionTrigger;
 @property(strong, nonatomic) UIPickerView *typePickerView;
 @property(strong, nonatomic) UIPickerView *suggestionPickerView;
-@property (weak, nonatomic) IBOutlet UITableViewCell *nameCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *deleteCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *suggestionsCell;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component;
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView;
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component;

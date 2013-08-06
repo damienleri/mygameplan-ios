@@ -18,6 +18,7 @@
 			      @property (nonatomic, retain) NSString * app_id;
 			      @property (nonatomic, retain) NSString * app_title;
 			      @property (nonatomic, retain) NSString * app_subtitle;
+@property (nonatomic, retain) NSString * app_url;
 
 
 @end

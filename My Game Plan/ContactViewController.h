@@ -10,6 +10,7 @@
 #import <AddressBookUI/AddressBookUI.h>
 #import "Contact.h"
 
+
 @interface ContactViewController : UITableViewController
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *firstNameLabel;
@@ -19,6 +20,6 @@
 @property(strong,nonatomic) Contact *contact;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITableViewCell *phoneCell;
-
+- (void)displayPerson:(ABRecordRef)person;
 
 @end

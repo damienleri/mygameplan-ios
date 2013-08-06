@@ -10,6 +10,8 @@
 #import "Config.h"
 #import "UAirship.h"
 #import "UAPush.h"
+#import <Parse/Parse.h>
+
 @implementation AppDelegate
 
 -(UIColor*)colorWithHexString:(NSString*)hex
@@ -95,8 +97,9 @@
     // Populate AirshipConfig.plist with your app's info from https://go.urbanairship.com
     [UAirship takeOff:takeOffOptions];
     
-    
-    
+    [Parse setApplicationId:@"zFWkYHIIjIBZ1z0qmWhUaNr66NQhY4QW02P5BMPo"
+                  clientKey:@"d9YxxNw2tj7o37FvDcnAD9dhoxGueDcldBDrXEYZ"];
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     
     // Register for notifications
@@ -109,15 +112,6 @@
     [self customizeBarButtons];
     [[UIApplication sharedApplication]
      setStatusBarStyle:UIStatusBarStyleBlackOpaque animated:NO];
-    if (FALSE) {
-    [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
-                                                           [UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1.0], UITextAttributeTextColor,
-                                                           [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8],UITextAttributeTextShadowColor,
-                                                           [NSValue valueWithUIOffset:UIOffsetMake(0, 1)],
-                                                           UITextAttributeTextShadowOffset,
-                                                           [UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:21.0], UITextAttributeFont, nil]];
-        [[UINavigationBar appearance] setTitleColor:[self colorWithHexString:@"333333"] forState: UIControlStateNormal];
-    }
     
     // [[UITableView appearance] setBackgroundColor:[self colorWithHexString:@"FEE6CE"]];
     [[UINavigationBar appearance] setTintColor:[self colorWithHexString:@"E6550D"]];
@@ -134,13 +128,27 @@
       UITextAttributeFont,
       nil]];
     
-//       [[UINavigationBar appearance] setTintColor:[UIColor redColor]];
+
     return YES;
 }
 
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    //// Handle incoming APN alert when the app is open.
+    
+    //// This handy function from Parse displays the alert as a uialertview. I know, APNs are being sent by Parse's competitor Urbain Airship but they don't have this handy function.
+    [PFPush handlePush:userInfo];
+}
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     // Updates the device token and registers the token with UA.
     [[UAPush shared] registerDeviceToken:deviceToken];
+
+    NSLog(@"......... token found. %@", deviceToken);
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:deviceToken forKey:@"apn_device_token"];
+    [defaults synchronize];
+
+//    [[Config sharedInstance] setObject:deviceToken forKey:@"deviceToken"];
+
 }
 
 
